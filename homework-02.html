@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>homework-02</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="homework-02">Homework 02</h1>
+<h2
+id="question-1-training-and-test-error-under-a-fixed-design">Question 1:
+Training and test error under a fixed design</h2>
+<p>Consider a linear regression problem with <span
+class="math inline"><em>n</em> = 100</span> observations and <span
+class="math inline"><em>p</em> = 20</span> available covariates.
+Generate one matrix <span
+class="math inline"><strong>X</strong><sub>all</sub> ∈ ℝ<sup><em>n</em> × <em>p</em></sup></span>
+whose entries are independent <span class="math inline">𝒩(0, 1)</span>
+random variables, and then keep this realized matrix fixed. Let</p>
+<p><span class="math display">$$
+\beta_j=0.4^{\sqrt{j}},
+\qquad j=1,\ldots,p,
+$$</span></p>
+<p>and define</p>
+<p><span
+class="math display"><strong>μ</strong> = <strong>X</strong><sub>all</sub><strong>β</strong>.</span></p>
+<p>Generate one training response and one independent test response
+from</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathbf y
+&amp;=\boldsymbol\mu+\boldsymbol\epsilon,\\
+\mathbf y^*
+&amp;=\boldsymbol\mu+\boldsymbol\epsilon^*,
+\end{aligned}
+$$</span></p>
+<p>where</p>
+<p><span class="math display">$$
+\boldsymbol\epsilon,\boldsymbol\epsilon^*
+\overset{\mathrm{ind}}{\sim}
+\mathcal N_n(\mathbf 0,\mathbf I_n).
+$$</span></p>
+<p>Here <span
+class="math inline"><strong>I</strong><sub><em>n</em></sub></span> is
+the <span class="math inline"><em>n</em> × <em>n</em></span> identity
+matrix.</p>
+<p>For <span
+class="math inline"><em>m</em> = 0, 1, …, <em>p</em></span>, fit a
+linear model with an intercept and the first <span
+class="math inline"><em>m</em></span> columns of <span
+class="math inline"><strong>X</strong><sub>all</sub></span> using <span
+class="math inline"><strong>y</strong></span>. If <span
+class="math inline">$\widehat{\mathbf y}_m$</span> is its fitted mean
+vector, define</p>
+<p><span class="math display">$$
+\operatorname{MSE}_{\mathrm{train},m}
+=\frac{1}{n}
+\left\lVert
+\mathbf y-\widehat{\mathbf y}_m
+\right\rVert_2^2,
+$$</span></p>
+<p>and</p>
+<p><span class="math display">$$
+\operatorname{MSE}_{\mathrm{test},m}
+=\frac{1}{n}
+\left\lVert
+\mathbf y^*-\widehat{\mathbf y}_m
+\right\rVert_2^2.
+$$</span></p>
+<p>Repeat this process independently 200 times, keeping <span
+class="math inline"><strong>X</strong><sub>all</sub></span> fixed.</p>
+<p>Use seed <code>43202</code> before generating <span
+class="math inline"><strong>X</strong><sub>all</sub></span> and the
+response errors. R and Python use different random-number generators, so
+their exact numerical values need not agree.</p>
+<ol type="1">
+<li><p>For each <span class="math inline"><em>m</em></span>, calculate
+the average training and test MSE over the 200 simulation runs. Plot
+both curves against <span class="math inline"><em>m</em></span>. Verify
+numerically that training MSE does not increase as predictors are added
+in each simulation run.</p></li>
+<li><p>For the model containing the first <span
+class="math inline"><em>m</em></span> predictors, write</p></li>
+</ol>
+<h1 id="-mathbf-x_m">$$ \mathbf X_m</h1>
+<h1 id="mathbf-1mathbf-x_1ldotsmathbf-x_m-qquad-mathbf-h_m">[\mathbf
+1,\mathbf x_1,\ldots,\mathbf x_m], \qquad \mathbf H_m</h1>
+<p>\mathbf X_m (\mathbf X_m^{\mathsf T}\mathbf X_m)^{-1} \mathbf
+X_m^{\mathsf T}. $$</p>
+<p>Here <span
+class="math inline"><strong>X</strong><sub><em>m</em></sub> ∈ ℝ<sup><em>n</em> × (<em>m</em> + 1)</sup></span>
+and <span
+class="math inline"><strong>H</strong><sub><em>m</em></sub> ∈ ℝ<sup><em>n</em> × <em>n</em></sup></span>.
+The model has <span class="math inline"><em>m</em> + 1</span> fitted
+coefficients, including the intercept. Define its <strong>total squared
+approximation bias</strong> as</p>
+<p><span
+class="math display"><em>B</em><sub><em>m</em></sub><sup>2</sup> = ∥(<strong>I</strong><sub><em>n</em></sub> − <strong>H</strong><sub><em>m</em></sub>)<strong>μ</strong>∥<sub>2</sub><sup>2</sup>.</span></p>
+<p>Thus, <span
+class="math inline"><em>B</em><sub><em>m</em></sub><sup>2</sup>/<em>n</em></span>
+is the mean squared approximation bias.</p>
+<p>Calculate the two theoretical expectations</p>
+<p><span class="math display">$$
+E\!\left(
+\operatorname{MSE}_{\mathrm{train},m}
+\mid \mathbf X_{\mathrm{all}}
+\right)
+=\frac{B_m^2}{n}+1-\frac{m+1}{n},
+$$</span></p>
+<p>and</p>
+<p><span class="math display">$$
+E\!\left(
+\operatorname{MSE}_{\mathrm{test},m}
+\mid \mathbf X_{\mathrm{all}}
+\right)
+=\frac{B_m^2}{n}+1+\frac{m+1}{n}.
+$$</span></p>
+<p>Add these expectations to your plot and compare them with the
+simulation averages.</p>
+<ol start="3" type="1">
+<li>Add the test MSE curve from one simulation run to the plot. Explain
+why this single curve is less smooth than the average test MSE. Use the
+approximation-bias and estimation-variance terms in the expected test
+MSE to explain why training MSE cannot be used by itself to select the
+predictor count.</li>
+</ol>
+<h2 id="solution">Solution</h2>
+<ol type="1">
+<li>import numpy as np import matplotlib.pyplot as plt</li>
+</ol>
+<p>rng = np.random.default_rng(43202) n = 100 p = 20 repetitions =
+200</p>
+<h1 id="generate-one-covariate-matrix-then-keep-it-fixed">Generate one
+covariate matrix, then keep it fixed.</h1>
+<p>X_all = rng.normal(size=(n, p)) beta = 0.4 ** np.sqrt(np.arange(1, p
++ 1)) mu = X_all @ beta</p>
+<h1
+id="rows-are-repetitions-columns-are-predictor-counts-0-through-p">Rows
+are repetitions; columns are predictor counts 0 through p.</h1>
+<p>train_mse = np.empty((repetitions, p + 1)) test_mse =
+np.empty((repetitions, p + 1))</p>
+<h1 id="each-run-observes-a-fresh-training-and-test-response">Each run
+observes a fresh training and test response.</h1>
+<p>for k in range(repetitions): y_train = mu + rng.normal(size=n) y_test
+= mu + rng.normal(size=n)</p>
+<pre><code># Compare every candidate model on this same response pair.
+for m in range(p + 1):
+    X_m = np.column_stack((np.ones(n), X_all[:, :m]))
+    Q = np.linalg.qr(X_m, mode=&quot;reduced&quot;)[0]
+    y_hat = Q @ (Q.T @ y_train)
+
+    train_mse[k, m] = np.mean((y_train - y_hat) ** 2)
+    test_mse[k, m] = np.mean((y_test - y_hat) ** 2)</code></pre>
+<p>theory_train = np.empty(p + 1) theory_test = np.empty(p + 1)</p>
+<h1
+id="fit-the-true-mean-to-calculate-the-fixed-design-approximation-bias">Fit
+the true mean to calculate the fixed-design approximation bias.</h1>
+<p>for m in range(p + 1): X_m = np.column_stack((np.ones(n), X_all[:,
+:m])) Q = np.linalg.qr(X_m, mode=“reduced”)[0] y_hat = Q @ (Q.T @ mu)
+bias_mse = np.mean((mu - y_hat) ** 2) theory_train[m] = bias_mse + 1 -
+(m + 1) / n theory_test[m] = bias_mse + 1 + (m + 1) / n</p>
+<p>average_train = train_mse.mean(axis=0) average_test =
+test_mse.mean(axis=0) training_is_monotone = np.all(np.diff(train_mse,
+axis=1) &lt;= 1e-10)</p>
+<p>for m in [0, 5, 10, 15, 20]: print( f”m={m:2d},
+train={average_train[m]:.4f}, ” f”E(train)={theory_train[m]:.4f}, ”
+f”test={average_test[m]:.4f}, ” f”E(test)={theory_test[m]:.4f}” )</p>
+<p>print(“Training MSE is monotone:”, training_is_monotone)
+print(“Minimum average test:”, int(np.argmin(average_test)))
+print(“Minimum expected test:”, int(np.argmin(theory_test)))</p>
+<p>fig, ax = plt.subplots(figsize=(8, 5.2)) m_values = np.arange(p + 1)
+ax.plot(m_values, average_train, color=“#2F6FB3”, lw=2.3, label=“Average
+training”) ax.plot(m_values, theory_train, “–”, color=“#2F6FB3”, lw=2,
+label=“Expected training”) ax.plot(m_values, average_test,
+color=“#C84A16”, lw=2.3, label=“Average test”) ax.plot(m_values,
+theory_test, “–”, color=“#C84A16”, lw=2, label=“Expected test”)
+ax.plot(m_values, test_mse[0], “:”, color=“0.45”, lw=1.4, label=“Test,
+repetition 1”) ax.set(xlabel=“Number of predictors”, ylabel=“Mean
+squared error”) ax.spines[[“top”, “right”]].set_visible(False)
+ax.legend(frameon=False, fontsize=8) fig.tight_layout() plt.show()</p>
+<h2 id="question-2-prediction-error-at-one-target-point">Question 2:
+Prediction error at one target point</h2>
+<p>Let <span class="math inline"><em>n</em> = 100</span>, <span
+class="math inline"><em>p</em> = 6</span>, and <span
+class="math inline"><em>σ</em><sup>2</sup> = 1</span>. Construct the
+fixed covariate matrix <span
+class="math inline"><strong>X</strong><sub>all</sub> ∈ ℝ<sup><em>n</em> × <em>p</em></sup></span>
+with entries</p>
+<p><span class="math display">$$
+(\mathbf X_{\mathrm{all}})_{ij}
+=\sqrt{2}\cos\left\{
+\frac{\pi j(i-\tfrac12)}{n}
+\right\},
+\qquad
+i=1,\ldots,n,
+\quad
+j=1,\ldots,p.
+$$</span></p>
+<p>Its columns satisfy</p>
+<p><span class="math display">$$
+\mathbf 1^{\mathsf T}\mathbf X_{\mathrm{all}}=\mathbf 0^{\mathsf T},
+\qquad
+\frac{1}{n}\mathbf X_{\mathrm{all}}^{\mathsf T}\mathbf
+X_{\mathrm{all}}=\mathbf I_p.
+$$</span></p>
+<p>Here <span
+class="math inline"><strong>I</strong><sub><em>p</em></sub></span> is
+the <span class="math inline"><em>p</em> × <em>p</em></span> identity
+matrix.</p>
+<p>The following code shows a direct construction of <span
+class="math inline"><strong>X</strong><sub>all</sub></span>.</p>
+<div class="panel-tabset" data-group="language">
+
+<h3 id="r">R</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X_all <span class="ot">&lt;-</span> <span class="fu">outer</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span>n, <span class="dv">1</span><span class="sc">:</span>p,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(i, j) <span class="fu">sqrt</span>(<span class="dv">2</span>) <span class="sc">*</span> <span class="fu">cos</span>(pi <span class="sc">*</span> j <span class="sc">*</span> (i <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">/</span> n)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="python">Python</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n, p <span class="op">=</span> <span class="dv">100</span>, <span class="dv">6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> np.arange(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>)[:, <span class="va">None</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>j <span class="op">=</span> np.arange(<span class="dv">1</span>, p <span class="op">+</span> <span class="dv">1</span>)[<span class="va">None</span>, :]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>X_all <span class="op">=</span> np.sqrt(<span class="dv">2</span>) <span class="op">*</span> np.cos(np.pi <span class="op">*</span> j <span class="op">*</span> (i <span class="op">-</span> <span class="fl">0.5</span>) <span class="op">/</span> n)</span></code></pre></div>
+</div>
+
+<p>Keep <span
+class="math inline"><strong>X</strong><sub>all</sub></span> fixed and
+generate one training response from</p>
+<p><span
+class="math display"><strong>y</strong> = <strong>X</strong><sub>all</sub><strong>β</strong> + <strong>ϵ</strong>,   <strong>β</strong> = (0.5, 0.5, 0.5, 0.5, 0.5, 0.5)<sup>T</sup>,</span></p>
+<p>where</p>
+<p><span
+class="math display"><strong>ϵ</strong> ∼ 𝒩<sub><em>n</em></sub>(<strong>0</strong>, <strong>I</strong><sub><em>n</em></sub>).</span></p>
+<p>Here <span
+class="math inline"><strong>I</strong><sub><em>n</em></sub></span> is
+the <span class="math inline"><em>n</em> × <em>n</em></span> identity
+matrix.</p>
+<p>For <span class="math inline"><em>m</em> = 0, …, <em>p</em></span>,
+fit a linear model with an intercept and the first <span
+class="math inline"><em>m</em></span> predictors. Consider prediction of
+the mean response at</p>
+<p><span
+class="math display"><strong>x</strong><sub>0</sub> = (0, 1, 0, 0, 1, 0)<sup>T</sup>.</span></p>
+<p>Write</p>
+<p><span
+class="math display"><em>μ</em><sub>0</sub> = <strong>x</strong><sub>0</sub><sup>T</sup><strong>β</strong>,</span></p>
+<p>and let <span
+class="math inline"><em>μ̂</em><sub>0, <em>m</em></sub></span> be the
+prediction from the model containing the first <span
+class="math inline"><em>m</em></span> predictors. Here <span
+class="math inline"><em>x</em><sub>0<em>j</em></sub></span> denotes the
+<span class="math inline"><em>j</em></span>th coordinate of <span
+class="math inline"><strong>x</strong><sub>0</sub></span>. For this
+design,</p>
+<h1
+id="-eleft-leftwidehatmu_0m-mu_0right2-mid-mathbf-x_mathrmall-right">$$
+E!\left[ \left(\widehat\mu_{0,m}-\mu_0\right)^2 \mid \mathbf
+X_{\mathrm{all}} \right]</h1>
+<p>\left( \sum_{j=m+1}^{p}x_{0j}\beta_j \right)^2 +\frac{\sigma^2}{n}
+\left( 1+\sum_{j=1}^{m}x_{0j}^2 \right). $$</p>
+<ol type="1">
+<li><p>Calculate <span
+class="math inline"><em>μ</em><sub>0</sub></span>, the theoretical
+squared bias, and the expected squared error for <span
+class="math inline"><em>m</em> = 0, …, <em>p</em></span> using the
+formula above. <strong>You do not need to derive the formula.</strong>
+Briefly explain in words why it consists of a squared bias term from
+omitted predictors and a variance term from estimating coefficients; no
+proof is required. Identify the values of <span
+class="math inline"><em>m</em></span> where the expected squared error
+changes and where it remains unchanged.</p></li>
+<li><p>Use seed <code>43203</code>. Generate the response, fit the
+models, and calculate</p></li>
+</ol>
+<p><span
+class="math display">(<em>μ̂</em><sub>0, <em>m</em></sub> − <em>μ</em><sub>0</sub>)<sup>2</sup>.</span></p>
+<p>Repeat this independently 200 times. Plot the simulation averages and
+theoretical expectations together. Report the smallest <span
+class="math inline"><em>m</em></span> that minimizes the theoretical
+error.</p>
+<ol start="3" type="1">
+<li>All six regression coefficients are nonzero. Explain why only
+predictors 2 and 5 contribute directly to the mean response at <span
+class="math inline"><strong>x</strong><sub>0</sub></span>. Contrast this
+target-specific error with the test MSE averaged over all rows of <span
+class="math inline"><strong>X</strong><sub>all</sub></span> in Question
+1.</li>
+</ol>
+<h2 id="solution-1">Solution</h2>
+<p>import numpy as np import matplotlib.pyplot as plt</p>
+<p>rng_q2 = np.random.default_rng(43203) n = 100 p = 6 sigma2 = 1.0
+repetitions = 200</p>
+<p>i = np.arange(1, n + 1)[:, None] j = np.arange(1, p + 1)[None, :]
+X_all = np.sqrt(2) * np.cos(np.pi * j * (i - 0.5) / n)</p>
+<p>beta = np.repeat(0.5, p) x0 = np.array([0, 1, 0, 0, 1, 0],
+dtype=float) mu = X_all @ beta mu0 = x0 @ beta</p>
+<p>assert np.allclose(X_all.sum(axis=0), 0, atol=1e-10) assert
+np.allclose(X_all.T @ X_all / n, np.eye(p), atol=1e-10)</p>
+<h1
+id="rows-are-repetitions-columns-are-predictor-counts-0-through-p-1">Rows
+are repetitions; columns are predictor counts 0 through p.</h1>
+<p>simulation_error = np.empty((repetitions, p + 1))</p>
+<h1 id="each-run-observes-a-fresh-response">Each run observes a fresh
+response.</h1>
+<p>for k in range(repetitions): y_train = mu + rng_q2.normal(size=n)</p>
+<pre><code># Compare every candidate model on this same response.
+for m in range(p + 1):
+    X_m = np.column_stack((np.ones(n), X_all[:, :m]))
+    beta_hat = np.linalg.solve(X_m.T @ X_m, X_m.T @ y_train)
+    target_row = np.r_[1, x0[:m]]
+    mu0_hat = target_row @ beta_hat
+    simulation_error[k, m] = (mu0_hat - mu0) ** 2</code></pre>
+<p>simulated = simulation_error.mean(axis=0) theoretical = np.empty(p +
+1)</p>
+<h1 id="compute-the-target-specific-expectations-separately">Compute the
+target-specific expectations separately.</h1>
+<p>for m in range(p + 1): omitted_signal = x0[m:] @ beta[m:]
+estimation_variance = sigma2 * (1 + x0[:m] @ x0[:m]) / n theoretical[m]
+= omitted_signal**2 + estimation_variance</p>
+<p>for m in range(p + 1): print( f”m={m}, simulated={simulated[m]:.4f},
+” f”theoretical={theoretical[m]:.4f}” )</p>
+<p>print(“First minimum:”, int(np.argmin(theoretical)))</p>
+<p>fig, ax = plt.subplots(figsize=(7, 4.5)) m_values = np.arange(p + 1)
+ax.plot(m_values, simulated, “o-”, color=“#2F6FB3”, lw=2.3,
+label=“Simulation average”) ax.plot(m_values, theoretical, “–”,
+color=“#C84A16”, lw=2, label=“Theoretical expectation”) ax.axvline(2,
+color=“0.6”, linestyle=“:”) ax.axvline(5, color=“0.6”, linestyle=“:”)
+ax.set( xlabel=“Number of predictors”, ylabel=“Mean squared error at the
+target”, xticks=m_values, ) ax.spines[[“top”,
+“right”]].set_visible(False) ax.legend(frameon=False) fig.tight_layout()
+plt.show()</p>
+<h2 id="question-3-the-optimism-correction">Question 3: The optimism
+correction</h2>
+<p>Choose one candidate model before observing the response. Let <span
+class="math inline"><em>p</em></span> be its number of predictors and
+let <span
+class="math inline"><strong>X</strong> ∈ ℝ<sup><em>n</em> × (<em>p</em> + 1)</sup></span>
+be its full-rank design matrix, including the intercept. The model has
+<span class="math inline"><em>p</em> + 1</span> fitted coefficients.
+Let</p>
+<p><span
+class="math display"><strong>H</strong> = <strong>X</strong>(<strong>X</strong><sup>T</sup><strong>X</strong>)<sup>−1</sup><strong>X</strong><sup>T</sup></span></p>
+<p>be its hat matrix. Suppose</p>
+<p><span
+class="math display"><strong>y</strong> = <strong>μ</strong> + <strong>ϵ</strong>,   <strong>y</strong><sup>*</sup> = <strong>μ</strong> + <strong>ϵ</strong><sup>*</sup>,</span></p>
+<p>Conditional on the fixed design <span
+class="math inline"><strong>X</strong></span>, the two error vectors are
+independent, have mean zero, and have covariance matrix <span
+class="math inline"><em>σ</em><sup>2</sup><strong>I</strong><sub><em>n</em></sub></span>.
+Define</p>
+<h1 id="-operatornamemse_mathrmtrain">$$
+\operatorname{MSE}_{\mathrm{train}}</h1>
+<h1
+id="frac1n-leftlvert-mathbf-y-mathbf-hmathbf-y-rightrvert_22-qquad-operatornamemse_mathrmtest">\frac{1}{n}
+\left\lVert \mathbf y-\mathbf H\mathbf y \right\rVert_2^2, \qquad
+\operatorname{MSE}_{\mathrm{test}}</h1>
+<p>\frac{1}{n} \left\lVert \mathbf y^*-\mathbf H\mathbf y
+\right\rVert_2^2. $$</p>
+<p>The conditional bias vector of the fitted mean is</p>
+<h1 id="-emathbf-hmathbf-ymidmathbf-x-boldsymbolmu">$$ E(\mathbf
+H\mathbf y\mid\mathbf X)-\boldsymbol\mu</h1>
+<p>-(\mathbf I_n-\mathbf H)\boldsymbol\mu. $$</p>
+<p>Let <span class="math inline"><em>B</em><sup>2</sup></span> denote
+the <strong>total squared approximation bias</strong>:</p>
+<p><span
+class="math display"><em>B</em><sup>2</sup> = ∥(<strong>I</strong><sub><em>n</em></sub> − <strong>H</strong>)<strong>μ</strong>∥<sub>2</sub><sup>2</sup>.</span></p>
+<p>Thus, <span
+class="math inline"><em>B</em><sup>2</sup>/<em>n</em></span> is the mean
+squared approximation bias.</p>
+<p>You may use</p>
+<p><span
+class="math display"><strong>H</strong><sup>T</sup> = <strong>H</strong>,   <strong>H</strong><sup>2</sup> = <strong>H</strong>,   tr (<strong>H</strong>) = <em>p</em> + 1.</span></p>
+<p>For any fixed matrix <span
+class="math inline"><strong>A</strong></span>, you may also use</p>
+<p><span
+class="math display"><em>E</em> (<strong>ϵ</strong><sup>T</sup><strong>A</strong><strong>ϵ</strong> ∣ <strong>X</strong>) = <em>σ</em><sup>2</sup>tr (<strong>A</strong>).</span></p>
+<ol type="1">
+<li>Derive</li>
+</ol>
+<p><span class="math display">$$
+E(\operatorname{MSE}_{\mathrm{train}}\mid\mathbf X)
+=\frac{B^2}{n}
++\sigma^2\left(1-\frac{p+1}{n}\right),
+$$</span></p>
+<p>and</p>
+<p><span class="math display">$$
+E(\operatorname{MSE}_{\mathrm{test}}\mid\mathbf X)
+=\frac{B^2}{n}
++\sigma^2\left(1+\frac{p+1}{n}\right).
+$$</span></p>
+<ol start="2" type="1">
+<li>Deduce the expected optimism, defined as <span
+class="math inline"><em>E</em>(MSE<sub>test</sub> − MSE<sub>train</sub> ∣ <strong>X</strong>)</span>.
+For</li>
+</ol>
+<p><span class="math display">$$
+n=120,
+\qquad
+p=4,
+\qquad
+\frac{B^2}{n}=0.04,
+\qquad
+\sigma^2=1,
+$$</span></p>
+<p>calculate the expected training MSE, expected test MSE, and their
+difference. Explain why the ordering need not hold for every realized
+pair of responses.</p>
+<ol start="3" type="1">
+<li>Continue with <span class="math inline"><em>n</em> = 120</span> and
+<span class="math inline"><em>p</em> = 4</span>. Suppose the candidate
+model has residual sum of squares <span
+class="math inline">RSS  = 116.4</span>, and suppose a common estimate
+of the error variance is <span
+class="math inline"><em>σ̂</em><sup>2</sup> = 0.96</span>.</li>
+</ol>
+<p>Calculate</p>
+<p><span class="math display">$$
+\widehat{\operatorname{MSE}}_{\mathrm{test}}
+=\frac{
+\operatorname{RSS}+2(p+1)\widehat\sigma^2
+}{n},
+$$</span></p>
+<p>and</p>
+<p><span class="math display">$$
+C_p
+=\frac{\operatorname{RSS}}{\widehat\sigma^2}
+-n+2(p+1).
+$$</span></p>
+<p>Show how these two quantities are related, and explain why minimizing
+<span class="math inline"><em>C</em><sub><em>p</em></sub></span> is
+equivalent to minimizing the corrected test MSE when <span
+class="math inline"><em>n</em></span> and <span
+class="math inline"><em>σ̂</em><sup>2</sup></span> are common to all
+candidate models.</p>
+<h2 id="solution-2">Solution</h2>
+<p>The training residual is</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathbf y-\mathbf H\mathbf y
+&amp;=(\mathbf I_n-\mathbf H)
+(\boldsymbol\mu+\boldsymbol\epsilon)\\
+&amp;=(\mathbf I_n-\mathbf H)\boldsymbol\mu
++(\mathbf I_n-\mathbf H)\boldsymbol\epsilon.
+\end{aligned}
+$$</span></p>
+<p>The cross term has expectation zero. Since <span
+class="math inline"><strong>I</strong><sub><em>n</em></sub> − <strong>H</strong></span>
+is symmetric and idempotent,</p>
+<p><span class="math display">$$
+\begin{aligned}
+E\!\left(
+\left\lVert
+\mathbf y-\mathbf H\mathbf y
+\right\rVert_2^2
+\mid\mathbf X
+\right)
+&amp;=
+B^2+\sigma^2\operatorname{tr}(\mathbf I_n-\mathbf H)\\
+&amp;=
+B^2+\sigma^2(n-(p+1)).
+\end{aligned}
+$$</span></p>
+<p>Dividing by <span class="math inline"><em>n</em></span> gives the
+stated expected training MSE.</p>
+<p>For the independent test response,</p>
+<h1 id="-mathbf-y-mathbf-hmathbf-y">$$ \mathbf y^*-\mathbf H\mathbf
+y</h1>
+<p>(\mathbf I_n-\mathbf H)\boldsymbol\mu +\boldsymbol\epsilon^* -\mathbf
+H\boldsymbol\epsilon. $$</p>
+<p>All cross terms again have expectation zero. Independence gives</p>
+<p><span class="math display">$$
+\begin{aligned}
+E\!\left(
+\left\lVert
+\boldsymbol\epsilon^*
+-\mathbf H\boldsymbol\epsilon
+\right\rVert_2^2
+\mid\mathbf X
+\right)
+&amp;=
+n\sigma^2+
+\sigma^2\operatorname{tr}(\mathbf H)\\
+&amp;=
+\sigma^2(n+(p+1)).
+\end{aligned}
+$$</span></p>
+<p>Therefore,</p>
+<h1 id="-eoperatornamemse_mathrmtestmidmathbf-x">$$
+E(\operatorname{MSE}_{\mathrm{test}}\mid\mathbf X)</h1>
+<p>\frac{B^2}{n} +\sigma^2\left(1+\frac{p+1}{n}\right). $$</p>
+<p>Subtracting the expectations gives</p>
+<h1
+id="-e-operatornamemsemathrmtest--operatornamemsemathrmtrain-midmathbf-x-">$$
+E( \operatorname{MSE}<em>{\mathrm{test}}
+-\operatorname{MSE}</em>{\mathrm{train}} \mid\mathbf X )</h1>
+<p>\frac{2(p+1)\sigma^2}{n}. $$</p>
+<p>For the stated values,</p>
+<h1 id="-eoperatornamemse_mathrmtrainmidmathbf-x">$$
+E(\operatorname{MSE}_{\mathrm{train}}\mid\mathbf X)</h1>
+<h1 id="0041-frac41120">0.04+1-\frac{4+1}{120}</h1>
+<p>0.998333, $$</p>
+<h1 id="-eoperatornamemse_mathrmtestmidmathbf-x-1">$$
+E(\operatorname{MSE}_{\mathrm{test}}\mid\mathbf X)</h1>
+<h1 id="0041frac41120">0.04+1+\frac{4+1}{120}</h1>
+<p>1.081667, $$</p>
+<p>and their difference is <span class="math inline">0.083333</span>.
+These are long-run averages, so a particular test MSE can still be
+smaller than its corresponding training MSE.</p>
+<p>The corrected estimate is</p>
+<h1 id="-widehatoperatornamemse_mathrmtest">$$
+\widehat{\operatorname{MSE}}_{\mathrm{test}}</h1>
+<h1 id="frac1164241096120">\frac{116.4+2(4+1)(0.96)}{120}</h1>
+<p>1.05. $$</p>
+<p>Mallows’ <span
+class="math inline"><em>C</em><sub><em>p</em></sub></span> is</p>
+<h1 id="-c_p">$$ C_p</h1>
+<h1 id="frac1164096-120241">\frac{116.4}{0.96}-120+2(4+1)</h1>
+<p>11.25. $$</p>
+<p>Their relationship is</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\widehat\sigma^2(C_p+n)}{n}
+&amp;=
+\frac{0.96(11.25+120)}{120}\\
+&amp;=
+1.05\\
+&amp;=
+\frac{\operatorname{RSS}+2(p+1)\widehat\sigma^2}{n}.
+\end{aligned}
+$$</span></p>
+<p>When <span class="math inline"><em>n</em></span> and <span
+class="math inline"><em>σ̂</em><sup>2</sup></span> are common to all
+candidates, this is an increasing transformation. The two criteria
+therefore rank the models in the same order.</p>
+<h2 id="question-4-comparing-mallows-c_p-aic-and-bic">Question 4:
+Comparing Mallows’ <span
+class="math inline"><em>C</em><sub><em>p</em></sub></span>, AIC, and
+BIC</h2>
+<p>Use <code>data/diabetes.csv</code>, with <code>y</code> as the
+response. Use rows 1 through 370 as the training data, and let <span
+class="math inline"><em>n</em> = 370</span> denote the training sample
+size. Do not use rows 371 through 442 in this question. Fit the
+following ordinary least-squares models, each with an intercept.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Predictors</th>
+<th style="text-align: right;"><span
+class="math inline"><em>p</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model A</td>
+<td><code>bmi</code>, <code>bp</code>, <code>s5</code>,
+<code>sex</code>, <code>s1</code>, <code>s2</code>, <code>s4</code></td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>Model B</td>
+<td>all predictors in Model A, followed by <code>s6</code></td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>Full reference</td>
+<td>all ten predictors</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="math inline"><em>p</em></span> counts predictors,
+so each model has <span class="math inline"><em>p</em> + 1</span> fitted
+coefficients including the intercept. Estimate one common noise variance
+from the full reference model, using <span
+class="math inline"><em>p</em> = 10</span>:</p>
+<p><span class="math display">$$
+\widehat\sigma^2
+=\frac{\operatorname{RSS}_{\mathrm{full}}}{n-(p+1)}.
+$$</span></p>
+<p>For Models A and B, calculate</p>
+<p><span class="math display">$$
+C_p
+=\frac{\operatorname{RSS}}{\widehat\sigma^2}
+-n+2(p+1),
+$$</span></p>
+<p><span class="math display">$$
+\operatorname{AIC}^{\mathrm{red}}
+=n\log\left(\frac{\operatorname{RSS}}{n}\right)+2(p+1),
+$$</span></p>
+<p>and</p>
+<p><span class="math display">$$
+\operatorname{BIC}^{\mathrm{red}}
+=n\log\left(\frac{\operatorname{RSS}}{n}\right)
++(p+1)\log(n).
+$$</span></p>
+<p>The reduced AIC and BIC omit constants shared by the two candidate
+models. Smaller values are preferred within each criterion.</p>
+<ol type="1">
+<li><p>Fit the three models. Report <span
+class="math inline"><em>p</em></span>, RSS, the residual degrees of
+freedom of the full model, and <span
+class="math inline"><em>σ̂</em><sup>2</sup></span>.</p></li>
+<li><p>Calculate <span
+class="math inline"><em>C</em><sub><em>p</em></sub></span>, reduced AIC,
+and reduced BIC for Models A and B. State which model each criterion
+selects. Do not compare numerical values across different
+criteria.</p></li>
+<li><p>Compare the improvement in fit from adding <code>s6</code> with
+the one-parameter penalty under each criterion. Use this comparison to
+explain any disagreement. Why does selecting a model not establish that
+it is the true data-generating model?</p></li>
+</ol>
+<h2 id="solution-3">Solution</h2>
+<p>from pathlib import Path import numpy as np import pandas as pd</p>
+<p>data_candidates = [ Path(“data/diabetes.csv”),
+Path(“../../../data/week-02/diabetes.csv”),
+Path(“data/week-02/diabetes.csv”),] data_file = next(path for path in
+data_candidates if path.exists()) training =
+pd.read_csv(data_file).iloc[:370].copy() n = len(training)</p>
+<p>model_variables = { “A”: [“bmi”, “bp”, “s5”, “sex”, “s1”, “s2”,
+“s4”], “B”: [“bmi”, “bp”, “s5”, “sex”, “s1”, “s2”, “s4”, “s6”], “Full”:
+[ “age”, “sex”, “bmi”, “bp”, “s1”, “s2”, “s3”, “s4”, “s5”, “s6”, ],
+}</p>
+<p>def fit_rss(variables): # Construct the intercept explicitly so the
+coefficient count is p + 1. X = np.column_stack(( np.ones(n),
+training[variables].to_numpy(), )) beta_hat = np.linalg.lstsq( X,
+training[“y”].to_numpy(), rcond=None )[0] residuals =
+training[“y”].to_numpy() - X @ beta_hat return float(residuals @
+residuals)</p>
+<p>rss = { name: fit_rss(variables) for name, variables in
+model_variables.items() } p = { name: len(variables) for name, variables
+in model_variables.items() }</p>
+<p>residual_df = n - (p[“Full”] + 1) sigma2_hat = rss[“Full”] /
+residual_df</p>
+<p>results_py = pd.DataFrame({ “model”: [“Model A”, “Model B”], “p”:
+[p[“A”], p[“B”]], “rss”: [rss[“A”], rss[“B”]], }) results_py[“cp”] = (
+results_py[“rss”] / sigma2_hat - n + 2 * (results_py[“p”] + 1) )
+results_py[“aic”] = ( n * np.log(results_py[“rss”] / n) + 2 *
+(results_py[“p”] + 1) ) results_py[“bic”] = ( n *
+np.log(results_py[“rss”] / n) + np.log(n) * (results_py[“p”] + 1) )</p>
+<p>fit_gain = n * np.log(rss[“A”] / rss[“B”]) cp_gain = (rss[“A”] -
+rss[“B”]) / sigma2_hat</p>
+<p>print({“residual_df”: residual_df, “sigma2_hat”: sigma2_hat})</p>
+<p>print(results_py.round(6).to_string(index=False))</p>
+<p>print({ “aic_bic_fit_gain”: fit_gain, “cp_fit_gain”: cp_gain,
+“aic_penalty”: 2, “bic_penalty”: np.log(n), “cp_penalty”: 2, })</p>
+<h2 id="question-5-validation-and-final-test-data">Question 5:
+Validation and final test data</h2>
+<p>Use rows 1 through 370 of <code>diabetes.csv</code> as the training
+data and rows 371 through 442 as the final test data. Consider eleven
+nested candidate models. For <span
+class="math inline"><em>m</em> = 0, 1, …, 10</span>, the model with
+<span class="math inline"><em>m</em></span> predictors contains an
+intercept and the first <span class="math inline"><em>m</em></span>
+predictors in this order:</p>
+<p><code>age</code>, <code>sex</code>, <code>bmi</code>,
+<code>bp</code>, <code>s1</code>, <code>s2</code>, <code>s3</code>,
+<code>s4</code>, <code>s5</code>, <code>s6</code>.</p>
+<p>An analyst proposes the following procedure:</p>
+<ol type="1">
+<li>Fit all eleven candidate models using the training data.</li>
+<li>Calculate the MSE of each model on the final test data.</li>
+<li>Select the model with the smallest test MSE.</li>
+<li>Report that minimum as the final estimate of prediction error.</li>
+</ol>
+<p>The analyst argues that the procedure is valid because the final test
+data were not used to estimate the regression coefficients.</p>
+<ol type="1">
+<li><p>Identify the first step that misuses the final test data. Explain
+why the minimum of eleven test MSE values is generally too favorable as
+an estimate of the selected procedure’s future prediction
+error.</p></li>
+<li><p>Rewrite the analysis using five-fold cross-validation within the
+training data. State how the predictor count is selected, what is
+refitted, and when the final test data may be used.</p></li>
+<li><p>Suppose the analyst has already examined all eleven test MSE
+values. What can still be reported transparently, and what additional
+data would be needed for a new final evaluation?</p></li>
+</ol>
+<h3 id="solution-4">Solution</h3>
+<p>Step 2 is the first misuse. The final test responses are used to
+compare the candidates, so predictor count is selected using the final
+test data even though the coefficients were fitted using only the
+training data.</p>
+<p>Each test MSE contains random variation. Taking the minimum tends to
+select a model whose test MSE was unusually small by chance. Reporting
+the same minimum as the final assessment therefore gives an optimistic
+estimate of future prediction error.</p>
+<p>A valid procedure is:</p>
+<ol type="1">
+<li>Reserve rows 371 through 442 without inspecting their
+responses.</li>
+<li>Divide rows 1 through 370 into five folds.</li>
+<li>For each predictor count, fit on four folds and calculate MSE on the
+remaining fold. Repeat until every fold has served once as the
+validation fold.</li>
+<li>Average the five validation MSE values and select the predictor
+count with the smallest average.</li>
+<li>Refit the selected model using all 370 training observations.</li>
+<li>Evaluate this fitted model once on rows 371 through 442.</li>
+</ol>
+<p>Any data-dependent preprocessing must also be estimated within the
+four training folds. If all eleven final test MSE values have already
+been examined, the analysis can still be reported as exploratory, but
+the reported minimum is not an untouched final assessment. A new
+independent test dataset or genuinely future observations are needed for
+a new final evaluation.</p>
+<h2 id="reference">Reference</h2>
+<p>James, Witten, Hastie, Tibshirani, and Taylor, <a
+href="https://www.statlearning.com/"><em>An Introduction to Statistical
+Learning</em></a>, Chapters 3, 5, and 6.</p>
+</body>
+</html>

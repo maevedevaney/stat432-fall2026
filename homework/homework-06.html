@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Homework 06</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Homework 06</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#question-1-compare-knn-and-logistic-regression"
+id="toc-question-1-compare-knn-and-logistic-regression">Question 1:
+Compare KNN and logistic regression</a></li>
+<li><a href="#question-1-solution" id="toc-question-1-solution">Question
+1 Solution</a></li>
+<li><a href="#question-2-training-and-test-roc-curves"
+id="toc-question-2-training-and-test-roc-curves">Question 2: Training
+and test ROC curves</a></li>
+<li><a href="#question-3-peer-evaluation-of-homework-5"
+id="toc-question-3-peer-evaluation-of-homework-5">Question 3: Peer
+evaluation of Homework 5</a></li>
+<li><a href="#report-1-hethp" id="toc-report-1-hethp">Report 1:
+hethp</a></li>
+<li><a href="#report-2-krishay-b" id="toc-report-2-krishay-b">Report 2:
+krishay-b</a></li>
+<li><a href="#average-performance-across-simulations"
+id="toc-average-performance-across-simulations">Average performance
+across simulations</a></li>
+<li><a href="#variability-across-simulations"
+id="toc-variability-across-simulations">Variability across
+simulations</a></li>
+</ul>
+</nav>
+<h2 id="question-1-compare-knn-and-logistic-regression">Question 1:
+Compare KNN and logistic regression</h2>
+<p>Use <a href="data/breast-cancer.csv">breast-cancer.csv</a>, which
+contains 569 cases from the <a
+href="https://archive.ics.uci.edu/dataset/17/breast%2Bcancer%2Bwisconsin%2Bdiagnostic">Wisconsin
+Diagnostic Breast Cancer dataset</a>. Predict <code>y</code> (1 for
+malignant and 0 for benign) using <code>mean_radius</code>,
+<code>mean_texture</code>, and <code>mean_smoothness</code>.</p>
+<p>Set a random seed and randomly split the observations into 70%
+training and 30% test data. Use the same split for every model.
+Standardize the predictors using the training means and standard
+deviations, and apply the same transformations to the test data.</p>
+<p>Fit ordinary logistic regression with an intercept and no penalty,
+and KNN with Euclidean distance, equal neighbor weights, and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>5</mn><mo>,</mo><mn>15</mn><mo>,</mo><mn>25</mn><mo>,</mo><mn>35</mn><mo>,</mo><mn>45</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+k\in\{5,15,25,35,45\}.
+</annotation></semantics></math></p>
+<p>Using the estimated probabilities for <code>y = 1</code> on the test
+data, plot all six ROC curves in one figure and report their AUC values.
+Which of the six fitted models do you prefer? Give a brief justification
+based on your results.</p>
+<h2 id="question-1-solution">Question 1 Solution</h2>
+<p>We compare the models using their estimated probabilities of
+malignancy, not class predictions at a single cutoff. For KNN, this
+probability is the proportion of malignant cases among the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+nearest training observations:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mi>k</mi></mfrac><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><msub><mi>N</mi><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo></mrow></munder><msub><mi>y</mi><mi>i</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\widehat p(\mathbf x)=\frac{1}{k}\sum_{i\in N_k(\mathbf x)}y_i,
+</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">N_k(\mathbf x)</annotation></semantics></math>
+is the set of those neighbors. Averaging the numeric responses 0 and 1
+gives this probability directly.</p>
+<p>First split the data, then estimate each predictor’s mean and
+standard deviation from the training observations. Use those same values
+to standardize both sets. This prevents the test observations from
+influencing the fitted distance scale.</p>
+<p>```{python} #| label: hw6-q1-setup-python from pathlib import Path
+import numpy as np import pandas as pd import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression from
+sklearn.neighbors import KNeighborsClassifier from sklearn.metrics
+import roc_curve, roc_auc_score</p>
+<p>data_dir = Path(“data”) if not (data_dir /
+“breast-cancer.csv”).exists(): data_dir =
+Path(“practice/weeks/week-06/data”) data = pd.read_csv(data_dir /
+“breast-cancer.csv”) # Use the split generated with seed 432 in the R
+solution. split = pd.read_csv(data_dir / “breast-cancer-split.csv”)
+train = data.loc[split[“split”].eq(“train”)] test =
+data.loc[split[“split”].eq(“test”)] predictors = [“mean_radius”,
+“mean_texture”, “mean_smoothness”]</p>
+<p>x_bar = train[predictors].mean() s = train[predictors].std(ddof=1)
+X_train = ((train[predictors] - x_bar) / s).to_numpy() X_test =
+((test[predictors] - x_bar) / s).to_numpy() y_train =
+train[“y”].to_numpy() y_test = test[“y”].to_numpy()</p>
+<pre><code>
+:::
+
+Fit ordinary logistic regression and the five KNN models. In R, `knn.reg` averages the 0/1 responses; in Python, `predict_proba` returns the same neighbor proportions. Logistic regression includes an intercept, and `C=np.inf` removes the penalty in the Python fit.
+
+```{python}
+#| label: hw6-q1-fit-python
+fit = LogisticRegression(C=np.inf, solver=&quot;lbfgs&quot;, fit_intercept=True,
+                         tol=1e-10, max_iter=1000)
+fit.fit(X_train, y_train)
+k_values = [5, 15, 25, 35, 45]
+model_names = [&quot;Logistic regression&quot;] + [f&quot;KNN, k = {k}&quot; for k in k_values]
+p_test = np.empty((len(y_test), len(model_names)))
+p_test[:, 0] = fit.predict_proba(X_test)[:, 1]
+for m, k in enumerate(k_values):
+    knn_fit = KNeighborsClassifier(n_neighbors=k, weights=&quot;uniform&quot;,
+                                   metric=&quot;euclidean&quot;, algorithm=&quot;brute&quot;)
+    knn_fit.fit(X_train, y_train)
+    p_test[:, m + 1] = knn_fit.predict_proba(X_test)[:, 1]
+
+auc_test = [roc_auc_score(y_test, p_test[:, m])
+            for m in range(len(model_names))]
+print(pd.DataFrame({&quot;Model&quot;: model_names, &quot;Test AUC&quot;: auc_test})
+      .round(4).to_string(index=False))</code></pre>
+<p><code>{python} #| label: hw6-q1-roc-python #| fig-width: 6.5 #| fig-height: 6 #| fig-cap: "Test ROC curves for logistic regression and five KNN fits on the same 171 observations." #| fig-alt: "Six test ROC curves, with their AUC values in the legend, compared on common false-positive and true-positive rate axes." colors = ["#222222", "#0072B2", "#D55E00", "#009E73", "#CC79A7", "#806000"] line_styles = ["-", "--", ":", "-.", (0, (5, 2, 1, 2)), (0, (3, 2, 1, 2, 1, 2))] fig, ax = plt.subplots(figsize=(6.5, 6)) ax.plot([0, 1], [0, 1], color="0.7", linestyle="--") for m, name in enumerate(model_names):     fpr, tpr, _ = roc_curve(y_test, p_test[:, m])     ax.plot(fpr, tpr, color=colors[m], linestyle=line_styles[m], linewidth=2,             label=f"{name}: AUC = {auc_test[m]:.4f}") ax.set(xlim=(0, 1), ylim=(0, 1),        xlabel="False-positive rate", ylabel="True-positive rate") ax.legend(loc="lower right", frameon=False, fontsize=9) fig.tight_layout() plt.show()</code></p>
+<p>:::</p>
+<p>For this split, I prefer logistic regression. Its test AUC is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9746</mn><annotation encoding="application/x-tex">0.9746</annotation></semantics></math>,
+the largest of the six values, and it gives a simple fitted model. KNN
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">k=45</annotation></semantics></math>
+is nearly tied at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9741</mn><annotation encoding="application/x-tex">0.9741</annotation></semantics></math>,
+followed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">k=35</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9727</mn><annotation encoding="application/x-tex">0.9727</annotation></semantics></math>.
+The smaller neighborhoods have lower test AUCs:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9329</mn><annotation encoding="application/x-tex">0.9329</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9480</mn><annotation encoding="application/x-tex">0.9480</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9599</mn><annotation encoding="application/x-tex">0.9599</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn><mo>,</mo><mn>15</mn><mo>,</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">k=5,15,25</annotation></semantics></math>,
+respectively. The ROC curves show that the larger neighborhoods rank
+these test cases more effectively than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=5</annotation></semantics></math>
+does.</p>
+<p>This is a comparison on one test split. A small AUC difference does
+not establish that one method is always better, and AUC measures ranking
+rather than the fraction of correct class predictions. For a final
+model-selection exercise, choose the method and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+using validation or cross-validation within the training data, then
+evaluate the chosen model on a fresh test set.</p>
+<h2 id="question-2-training-and-test-roc-curves">Question 2: Training
+and test ROC curves</h2>
+<p>Use the same data, training/test split, and standardization as in
+Question 1. Fit KNN with Euclidean distance, equal neighbor weights,
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>20</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+k\in\{1,3,5,10,20\}.
+</annotation></semantics></math></p>
+<p>Use each fitted model to estimate probabilities for both the training
+and test observations. For training predictions, include each
+observation itself among its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+nearest neighbors.</p>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+use a separate panel to show the training and test ROC curves together.
+Report both AUC values.</p>
+<p>Explain the difference between training and test performance and how
+it changes with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+In particular, explain what happens at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
+and why training performance may not reflect performance on new
+observations.</p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>,
+each training observation is its own nearest neighbor. Thus its fitted
+probability equals its observed response, giving a training AUC of 1.
+This perfect training ranking does not establish good prediction for a
+new observation, whose label was not used in fitting.</p>
+<p>Reuse the data split and standardization from Question 1. In
+particular, supply the training predictors explicitly when requesting
+training predictions so that each observation can be its own
+neighbor.</p>
+<div class="panel-tabset sync-code-panels"
+data-group="homework-06-language">
+<p><code>{python} #| label: hw6-q2-fit-python k_values = [1, 3, 5, 10, 20] p_train = np.empty((len(y_train), len(k_values))) p_test = np.empty((len(y_test), len(k_values))) auc_train = np.empty(len(k_values)) auc_test = np.empty(len(k_values)) for m, k in enumerate(k_values):     knn_fit = KNeighborsClassifier(n_neighbors=k, weights="uniform",                                    metric="euclidean", algorithm="brute")     knn_fit.fit(X_train, y_train)     # Passing X_train explicitly includes each observation itself.     p_train[:, m] = knn_fit.predict_proba(X_train)[:, 1]     p_test[:, m] = knn_fit.predict_proba(X_test)[:, 1]     auc_train[m] = roc_auc_score(y_train, p_train[:, m])     auc_test[m] = roc_auc_score(y_test, p_test[:, m]) print(pd.DataFrame({"k": k_values, "Training AUC": auc_train,                     "Test AUC": auc_test}).round(4).to_string(index=False))</code></p>
+<p><code>{python} #| label: hw6-q2-roc-python #| fig-width: 10 #| fig-height: 7 #| fig-cap: "Training and test ROC curves for each KNN neighborhood size. Each training observation is included among its own neighbors." #| fig-alt: "Five panels compare training and test ROC curves for k equal to 1, 3, 5, 10, and 20. The k equals 1 training curve has AUC 1." fig, axes = plt.subplots(2, 3, figsize=(10, 7)) for m, k in enumerate(k_values):     ax = axes.flat[m]     fpr, tpr, _ = roc_curve(y_train, p_train[:, m])     ax.plot(fpr, tpr, color="#0072B2", linewidth=2,             label=f"Training AUC = {auc_train[m]:.4f}")     fpr, tpr, _ = roc_curve(y_test, p_test[:, m])     ax.plot(fpr, tpr, color="#D55E00", linestyle="--", linewidth=2,             label=f"Test AUC = {auc_test[m]:.4f}")     ax.plot([0, 1], [0, 1], color="0.7", linestyle=":")     ax.set(title=f"k = {k}", xlim=(0, 1), ylim=(0, 1),            xlabel="False-positive rate", ylabel="True-positive rate")     ax.legend(loc="lower right", frameon=False, fontsize=8) axes.flat[-1].set_visible(False) fig.tight_layout() plt.show()</code></p>
+</div>
+<p>The training AUC is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1.0000</mn><annotation encoding="application/x-tex">1.0000</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>,
+whereas the test AUC is only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.8764</mn><annotation encoding="application/x-tex">0.8764</annotation></semantics></math>.
+As
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+increases through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">3,5,10,20</annotation></semantics></math>,
+test AUC rises to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9138</mn><annotation encoding="application/x-tex">0.9138</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9329</mn><annotation encoding="application/x-tex">0.9329</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9446</mn><annotation encoding="application/x-tex">0.9446</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9586</mn><annotation encoding="application/x-tex">0.9586</annotation></semantics></math>.
+The training-test gap shrinks from about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.124</mn><annotation encoding="application/x-tex">0.124</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.029</mn><annotation encoding="application/x-tex">0.029</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">k=20</annotation></semantics></math>.</p>
+<p>Training AUC does not decrease at every step: it falls to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9847</mn><annotation encoding="application/x-tex">0.9847</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=5</annotation></semantics></math>,
+then rises to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9862</mn><annotation encoding="application/x-tex">0.9862</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k=10</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.9880</mn><annotation encoding="application/x-tex">0.9880</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">k=20</annotation></semantics></math>.
+Although larger neighborhoods smooth the fitted probabilities, their
+ranking can improve on both sets. The important pattern here is the
+overly optimistic training performance for very small
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+especially
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>.</p>
+<p>Increasing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+reduces the influence of any one training label. It often reduces the
+optimism of training performance and makes the estimated probabilities
+less variable. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+becomes too large, however, averaging over distant observations can miss
+local structure. Neither test AUC nor the training-test gap must change
+monotonically on a particular split.</p>
+<p>For 1NN, the estimated probabilities take only the values 0 and 1.
+Its test ROC curve therefore has one nontrivial point, and its AUC
+equals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">sensitivity</mtext><mo>+</mo><mtext mathvariant="normal">specificity</mtext><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(\text{sensitivity}+\text{specificity})/2</annotation></semantics></math>.
+The perfect training AUC is a consequence of reusing each observation’s
+own label; the test curve evaluates predictions for observations outside
+the training set.</p>
+<h2 id="question-3-peer-evaluation-of-homework-5">Question 3: Peer
+evaluation of Homework 5</h2>
+<p>You will receive two Homework 5 submissions to review. The
+instructor’s GitHub account, <strong>rqzhu-aide</strong>, will open a
+<strong>GitHub Issue</strong> in the repository containing your Homework
+5 submission. It will contain links to two other students’ repositories,
+where you can find their submitted homework reports.</p>
+<p>Open your repository’s <strong>Issues</strong> tab on GitHub to find
+the assignment. You may ask AI to explain GitHub Issues or help you
+locate the assignment.</p>
+<p>Choose <strong>one specific mistake or item for improvement</strong>
+from any question in either report.</p>
+<ol type="1">
+<li><p><strong>Identify the mistake or item for improvement.</strong>
+State which report and question you selected, and briefly describe what
+is wrong or could be improved. Examples include incorrect code, a
+calculation error, a misinterpretation of results, a plot that could
+communicate the findings more clearly, or anything else you think could
+be done better.</p></li>
+<li><p><strong>Explain your assessment.</strong> Quote the relevant
+text, code, or figure caption exactly. Explain why the selected answer
+is incorrect or how it could be improved, referring to its reasoning,
+calculations, code, figures, or interpretation. <strong>Complete this
+part yourself, without AI assistance.</strong></p></li>
+<li><p><strong>Provide a correction.</strong> Write a corrected or
+improved answer to the selected question, including any calculations,
+code, or figures needed.</p></li>
+</ol>
+<p>After completing your review, <strong>open a GitHub Issue in the
+repository containing the report you selected</strong>. Identify the
+report and question, and include your assessment and a detailed revision
+plan explaining what the author should change and why. Include a link to
+your posted GitHub Issue in your Homework 6 answer.</p>
+<h2 id="report-1-hethp">Report 1: hethp</h2>
+<p>For Question 4, line 255 is not the common convention for generating
+a confusion matrix. You currently have rows = predicted and columns =
+true. While it works mathematically, it is backwards from the standard
+convention. Instead, you could use pd.crosstab(pd.Series(y_te,
+name=‘True’),pd.Series(pred_euc, name=‘Pred’))</p>
+<p>link: https://github.com/hethp/stat432-fall2026/issues/3</p>
+<h2 id="report-2-krishay-b">Report 2: krishay-b</h2>
+<p>For Question 2, the results for KNN and lasso are compared using only
+one generated training dataset for each covariance setting. While there
+is no coding error, an area for improvement could be to repeat the
+simulation many times and report the average test MSE for each method.
+This would help decrease the influence of random variation from a single
+training dataset and provide a more reliable solution. This would look
+like</p>
+<p>set.seed(43251)</p>
+<p>nsim &lt;- 50</p>
+<p>knn_mse &lt;- numeric(nsim) lasso_mse &lt;- numeric(nsim)</p>
+<p>for (s in 1:nsim) {</p>
+<p># Generate a NEW training and test dataset train &lt;-
+generate_data(n = 400) test &lt;- generate_data(n = 1000)</p>
+<p># Fit 5-NN knn_pred &lt;- knn_reg(
+train<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">X,
+    train</annotation></semantics></math>y, test$X, k = 5 )</p>
+<p>knn_mse[s] &lt;- mean((test$y - knn_pred)^2)</p>
+<p># Fit lasso lasso_fit &lt;- cv.glmnet(
+train<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">X,
+    train</annotation></semantics></math>y, alpha = 1 )</p>
+<p>lasso_pred &lt;- predict( lasso_fit, newx = test$X, s = “lambda.min”
+)</p>
+<p>lasso_mse[s] &lt;- mean((test$y - lasso_pred)^2) }</p>
+<h1 id="average-performance-across-simulations">Average performance
+across simulations</h1>
+<p>mean(knn_mse) mean(lasso_mse)</p>
+<h1 id="variability-across-simulations">Variability across
+simulations</h1>
+<p>sd(knn_mse) sd(lasso_mse)</p>
+<p>link: https://github.com/krishay-b/stat432-fall2026/issues/4</p>
+</body>
+</html>

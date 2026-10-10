@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homework 07 LDA Analysis</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      color: #1f2937;
+      background: #ffffff;
+    }
+    h1, h2, h3 { color: #111827; }
+    h2 { border-bottom: 1px solid #e5e7eb; padding-bottom: 0.35rem; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.75rem;
+      text-align: left;
+    }
+    th { background: #f3f4f6; }
+    code { background: #f3f4f6; padding: 0.15rem 0.3rem; border-radius: 4px; }
+    .note { color: #374151; font-style: italic; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Homework 07: LDA Analysis Report</h1>
+    <p class="note">Random seed: 2026.</p>
+
+    <h2>Study design</h2>
+    <ul>
+      <li>Reserved a stratified 20% test set before model selection.</li>
+      <li>Used the remaining 80% for model comparison.</li>
+      <li>Within the training data, applied the same 5-fold cross-validation splits to all candidate models.</li>
+      <li>For PCA-based candidates, preprocessing was fit only on the training observations in each fold.</li>
+      <li>Candidate set: ordinary LDA and PCA-LDA with 2–9 principal components after standardization.</li>
+    </ul>
+
+    <h2>Figure</h2>
+    <p>Figure: cross-validated misclassification rate by candidate model.</p>
+    <pre>
+PCA-LDA (7 PCs)  0.274
+PCA-LDA (6 PCs)  0.277
+PCA-LDA (5 PCs)  0.279
+ordinary LDA     0.282
+PCA-LDA (9 PCs)  0.282
+PCA-LDA (4 PCs)  0.285
+PCA-LDA (8 PCs)  0.290
+PCA-LDA (3 PCs)  0.314
+PCA-LDA (2 PCs)  0.317
+    </pre>
+
+    <h2>Model comparison table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Mean CV misclassification</th>
+          <th>Test misclassification</th>
+          <th>Test confusion matrix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ordinary LDA</td>
+          <td>0.2822</td>
+          <td>0.2473</td>
+          <td>[[52, 9], [14, 18]]</td>
+        </tr>
+        <tr>
+          <td>Selected: PCA-LDA (7 PCs)</td>
+          <td>0.2739</td>
+          <td>0.2366</td>
+          <td>[[53, 8], [14, 18]]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Selected model and final result</h2>
+    <p>
+      The best cross-validated performer was PCA-LDA with 7 components, using a standardization step followed by an embedding estimated only on the training data in each fold. After refitting the selected preprocessing and model on the full training set, the final test misclassification rate was <strong>0.2366</strong>.
+    </p>
+
+    <h2>Interpretation</h2>
+    <ul>
+      <li>The PCA-based embedding modestly improved predictive performance relative to ordinary LDA.</li>
+      <li>The gain on the held-out test set was small but consistent with the cross-validation comparison.</li>
+      <li>The dataset is modest in size and somewhat imbalanced, so the improvement should be interpreted cautiously.</li>
+      <li>A limitation is that the comparison is based on a single random train/test split; different splits may change the ranking slightly.</li>
+    </ul>
+
+    <h2>Main finding</h2>
+    <p>
+      Within the LDA-based model family allowed here, a low-dimensional PCA embedding improved the classification error over ordinary LDA on the reserved test set, with the best model being PCA-LDA using 7 components.
+    </p>
+  </main>
+</body>
+</html>

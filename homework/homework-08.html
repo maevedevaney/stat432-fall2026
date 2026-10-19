@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Homework 08</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#homework-08" id="toc-homework-08">Homework 08</a>
+<ul>
+<li><a href="#question-1-boundary-and-margin"
+id="toc-question-1-boundary-and-margin">Question 1: Boundary and
+margin</a></li>
+<li><a href="#question-2-margin-in-four-dimensions"
+id="toc-question-2-margin-in-four-dimensions">Question 2: Margin in four
+dimensions</a></li>
+<li><a href="#question-3-peer-review-of-a-homework-7-skill"
+id="toc-question-3-peer-review-of-a-homework-7-skill">Question 3: Peer
+review of a Homework 7 skill</a></li>
+<li><a href="#question-3-solution" id="toc-question-3-solution">Question
+3: Solution</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="homework-08">Homework 08</h1>
+<p>The former kernel-tuning question has moved to Homework 09.</p>
+<p>Solutions for Questions 1 and 2 will be available after Monday,
+October 19, 2026. No solution can be provided for Question 3.</p>
+<p>For Questions 1 and 2, use either R or Python.</p>
+<h2 id="question-1-boundary-and-margin">Question 1: Boundary and
+margin</h2>
+<p>Use <code>margin-geometry-20.csv</code> from the combined ZIP, which
+contains 20 observations with predictors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_1,x_2</annotation></semantics></math>
+and class labels
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">y\in\{-1,1\}</annotation></semantics></math>.
+Consider the score</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.8</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>0.6</mn><msub><mi>x</mi><mn>2</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(x)=0.8x_1+0.6x_2.
+</annotation></semantics></math></p>
+<p>Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>0.8</mn><mo>,</mo><mn>0.6</mn><mo stretchy="false" form="postfix">)</mo><msub><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|(0.8,0.6)\|_2=1</annotation></semantics></math>,
+the lines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x)=\pm1</annotation></semantics></math>
+are each a distance 1 from the decision boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(x)=0</annotation></semantics></math>.</p>
+<ol type="1">
+<li><p>Calculate the distance from every observation to the decision
+boundary and its functional margin
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">yf(x)</annotation></semantics></math>.
+In a table, report these values and whether each observation is inside,
+on, or beyond the margin for its class. Compare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">yf(x)</annotation></semantics></math>
+with 1 to make this distinction.</p></li>
+<li><p>Plot the observations, the boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(x)=0</annotation></semantics></math>,
+and the margin lines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x)=\pm1</annotation></semantics></math>.
+Distinguish the two classes and identify the observations inside the
+margin in your plot.</p></li>
+<li><p>Report how many observations are inside, on, and beyond the
+margin. Which observations are misclassified by this decision
+rule?</p></li>
+</ol>
+<p>Use the observation numbers supplied in the data. Set the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+axis to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>3.2</mn><mo>,</mo><mn>3.2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-3.2,3.2]</annotation></semantics></math>,
+set the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math>
+axis to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>3</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-3,3]</annotation></semantics></math>,
+and use an equal aspect ratio. Do not fit a new classifier for this
+question.</p>
+<h3 id="question-1a-solution">Question 1(a) Solution</h3>
+<p>The score is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.8</mn><msub><mi>x</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><mo>+</mo><mn>0.6</mn><msub><mi>x</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">f(x_i)=0.8x_{i1}+0.6x_{i2}</annotation></semantics></math>.
+Because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>0.8</mn><mo>,</mo><mn>0.6</mn><mo stretchy="false" form="postfix">)</mo><msub><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|(0.8,0.6)\|_2=1</annotation></semantics></math>,
+the distance to the boundary is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|f(x_i)|</annotation></semantics></math>,
+and the functional margin is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_if(x_i)</annotation></semantics></math>.
+An observation is inside its class margin if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y_if(x_i)&lt;1</annotation></semantics></math>,
+on it if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y_if(x_i)=1</annotation></semantics></math>,
+and beyond it if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y_if(x_i)&gt;1</annotation></semantics></math>.</p>
+<div id="tbl-q1-margins">
+<p>Table 1: Distance and functional margin for each observation</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/margin-geometry-20.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q1<span class="sc">$</span>score <span class="ot">&lt;-</span> <span class="fl">0.8</span> <span class="sc">*</span> q1<span class="sc">$</span>x1 <span class="sc">+</span> <span class="fl">0.6</span> <span class="sc">*</span> q1<span class="sc">$</span>x2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>q1<span class="sc">$</span>distance <span class="ot">&lt;-</span> <span class="fu">abs</span>(q1<span class="sc">$</span>score)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>q1<span class="sc">$</span>functional_margin <span class="ot">&lt;-</span> q1<span class="sc">$</span>y <span class="sc">*</span> q1<span class="sc">$</span>score</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Round only when comparing with 1 to avoid floating-point equality issues.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>q1<span class="sc">$</span>status <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">round</span>(q1<span class="sc">$</span>functional_margin, <span class="dv">8</span>) <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="st">&quot;Inside&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">ifelse</span>(<span class="fu">round</span>(q1<span class="sc">$</span>functional_margin, <span class="dv">8</span>) <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;On&quot;</span>, <span class="st">&quot;Beyond&quot;</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Observation =</span> q1<span class="sc">$</span>observation, <span class="at">Class =</span> q1<span class="sc">$</span>y,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">Score =</span> <span class="fu">round</span>(q1<span class="sc">$</span>score, <span class="dv">2</span>), <span class="at">Distance =</span> <span class="fu">round</span>(q1<span class="sc">$</span>distance, <span class="dv">2</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">Functional_margin =</span> <span class="fu">round</span>(q1<span class="sc">$</span>functional_margin, <span class="dv">2</span>), <span class="at">Status =</span> q1<span class="sc">$</span>status)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<h3 id="question-1b-solution">Question 1(b) Solution</h3>
+<p>The boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(x)=0</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mi>−</mi><mfrac><mn>4</mn><mn>3</mn></mfrac><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_2=-\frac43x_1</annotation></semantics></math>.
+The margin lines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x)=\pm1</annotation></semantics></math>
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>±</mi><mn>1</mn><mo>−</mo><mn>0.8</mn><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>0.6</mn></mrow><annotation encoding="application/x-tex">x_2=(\pm1-0.8x_1)/0.6</annotation></semantics></math>.
+The numbered, larger outlined points in the figure are inside their
+class margins.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(q1<span class="sc">$</span>x1, q1<span class="sc">$</span>x2, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.2</span>, <span class="fl">3.2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>, <span class="at">xlab =</span> <span class="fu">expression</span>(x[<span class="dv">1</span>]), <span class="at">ylab =</span> <span class="fu">expression</span>(x[<span class="dv">2</span>]),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Decision boundary and margins&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="sc">-</span><span class="fl">0.8</span> <span class="sc">/</span> <span class="fl">0.6</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fl">0.6</span>, <span class="at">b =</span> <span class="sc">-</span><span class="fl">0.8</span> <span class="sc">/</span> <span class="fl">0.6</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> <span class="fl">0.6</span>, <span class="at">b =</span> <span class="sc">-</span><span class="fl">0.8</span> <span class="sc">/</span> <span class="fl">0.6</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(q1<span class="sc">$</span>y <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;tomato3&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(q1<span class="sc">$</span>x1, q1<span class="sc">$</span>x2, <span class="at">col =</span> cols, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>inside <span class="ot">&lt;-</span> q1<span class="sc">$</span>status <span class="sc">==</span> <span class="st">&quot;Inside&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(q1<span class="sc">$</span>x1[inside], q1<span class="sc">$</span>x2[inside], <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="cn">NA</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">cex =</span> <span class="fl">2.1</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(q1<span class="sc">$</span>x1, q1<span class="sc">$</span>x2, <span class="at">labels =</span> q1<span class="sc">$</span>observation, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.75</span>, <span class="at">offset =</span> <span class="fl">0.55</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Class +1&quot;</span>, <span class="st">&quot;Class -1&quot;</span>, <span class="st">&quot;Inside margin&quot;</span>, <span class="st">&quot;Boundary&quot;</span>, <span class="st">&quot;Margin lines&quot;</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;tomato3&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="cn">NA</span>, <span class="cn">NA</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<h3 id="question-1c-solution">Question 1(c) Solution</h3>
+<p>There are <strong>6 inside</strong> the margin (observations 8, 9,
+10, 18, 19, and 20), <strong>2 on</strong> the margin (1 and 11), and
+<strong>12 beyond</strong> the margin (2–7 and 12–17). The misclassified
+observations are <strong>10 and 20</strong>, because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y_if(x_i)&lt;0</annotation></semantics></math>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm the counts and identify misclassifications from the data.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">factor</span>(q1<span class="sc">$</span>status, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Inside&quot;</span>, <span class="st">&quot;On&quot;</span>, <span class="st">&quot;Beyond&quot;</span>)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>q1<span class="sc">$</span>observation[q1<span class="sc">$</span>functional_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">1e-8</span>]</span></code></pre></div>
+<h2 id="question-2-margin-in-four-dimensions">Question 2: Margin in four
+dimensions</h2>
+<p>Use <code>margin-geometry-4d.csv</code> from the combined ZIP, which
+contains 50 observations with four predictors and class labels
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">y\in\{-1,1\}</annotation></semantics></math>.
+Consider the linear score</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>β</mi><mn>0</mn></msub><mo>+</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mi mathvariant="sans-serif">𝖳</mi></msup><mi mathvariant="bold-italic">𝜷</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>β</mi><mn>0</mn></msub><mo>=</mo><mi>−</mi><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mi mathvariant="bold-italic">𝜷</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo>,</mo><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mi mathvariant="sans-serif">𝖳</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(\mathbf{x})=\beta_0+\mathbf{x}^{\mathsf T}\boldsymbol{\beta},
+\qquad
+\beta_0=-1,
+\quad
+\boldsymbol{\beta}=(1,2,-2,4)^{\mathsf T}.
+</annotation></semantics></math></p>
+<ol type="1">
+<li><p>Project the observations onto the direction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝜷</mi><annotation encoding="application/x-tex">\boldsymbol{\beta}</annotation></semantics></math>
+and plot their positions on one axis. Distinguish the two classes and
+mark the decision boundary. Use the plot to calculate the geometric
+margin
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+the distance from the boundary to the closest observation.</p></li>
+<li><p>Express the same decision boundary using the SVM normalization in
+which the smallest functional margin
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="bold-italic">𝒙</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y_i f(\mathbf{x}_i)</annotation></semantics></math>
+is set to 1. What are the corresponding values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝜷</mi><annotation encoding="application/x-tex">\boldsymbol{\beta}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\beta_0</annotation></semantics></math>?</p></li>
+</ol>
+<h3 id="question-2a-solution">Question 2(a) Solution</h3>
+<p>The coefficient vector is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝜷</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo>,</mo><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mi mathvariant="sans-serif">𝖳</mi></msup></mrow><annotation encoding="application/x-tex">\boldsymbol{\beta}=(1,2,-2,4)^{\mathsf T}</annotation></semantics></math>,
+with length</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝜷</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msub><mo>=</mo><msqrt><mrow><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><msup><mn>4</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mn>5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\boldsymbol{\beta}\|_2=\sqrt{1^2+2^2+(-2)^2+4^2}=5.
+</annotation></semantics></math></p>
+<p>Project each observation onto its unit direction using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub><mo>=</mo><msubsup><mi mathvariant="bold-italic">𝒙</mi><mi>i</mi><mi mathvariant="sans-serif">𝖳</mi></msubsup><mi mathvariant="bold-italic">𝜷</mi><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">z_i=\mathbf{x}_i^{\mathsf T}\boldsymbol{\beta}/5</annotation></semantics></math>.
+Because the intercept is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>,
+the boundary is at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>5</mn><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">z=1/5=0.2</annotation></semantics></math>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/margin-geometry-4d.csv&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>q2<span class="sc">$</span>score <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">+</span> q2<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>q2<span class="sc">$</span>x2 <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>q2<span class="sc">$</span>x3 <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>q2<span class="sc">$</span>x4</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>q2<span class="sc">$</span>projection <span class="ot">&lt;-</span> (q2<span class="sc">$</span>score <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>q2<span class="sc">$</span>distance <span class="ot">&lt;-</span> <span class="fu">abs</span>(q2<span class="sc">$</span>score) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>q2<span class="sc">$</span>functional_margin <span class="ot">&lt;-</span> q2<span class="sc">$</span>y <span class="sc">*</span> q2<span class="sc">$</span>score</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>closest <span class="ot">&lt;-</span> <span class="fu">abs</span>(q2<span class="sc">$</span>distance <span class="sc">-</span> <span class="fu">min</span>(q2<span class="sc">$</span>distance)) <span class="sc">&lt;</span> <span class="fl">1e-8</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(q2<span class="sc">$</span>projection, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(q2)), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Projection onto beta / ||beta||&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Four-dimensional observations projected onto one axis&quot;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(q2<span class="sc">$</span>projection, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(q2)),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">ifelse</span>(q2<span class="sc">$</span>y <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;tomato3&quot;</span>), <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(q2<span class="sc">$</span>projection[closest], <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">sum</span>(closest)), <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg =</span> <span class="cn">NA</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(q2<span class="sc">$</span>projection[closest], <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">sum</span>(closest)),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> q2<span class="sc">$</span>observation[closest], <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.85</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Class +1&quot;</span>, <span class="st">&quot;Class -1&quot;</span>, <span class="st">&quot;Closest observations&quot;</span>, <span class="st">&quot;Boundary&quot;</span>),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;tomato3&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="cn">NA</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">1</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p>The closest observations are <strong>4, 15, 33, and 36</strong>, with
+scores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>,</mo><mi>−</mi><mn>5</mn><mo>,</mo><mn>5</mn><mo>,</mo><mi>−</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">5,-5,5,-5</annotation></semantics></math>,
+respectively. Each is distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>5</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5/5=1</annotation></semantics></math>
+from the boundary, so the <strong>geometric margin is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M=1</annotation></semantics></math></strong>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">Observation =</span> q2<span class="sc">$</span>observation[closest],</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Class =</span> q2<span class="sc">$</span>y[closest],</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Score =</span> <span class="fu">round</span>(q2<span class="sc">$</span>score[closest], <span class="dv">3</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Projection =</span> <span class="fu">round</span>(q2<span class="sc">$</span>projection[closest], <span class="dv">3</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Distance =</span> <span class="fu">round</span>(q2<span class="sc">$</span>distance[closest], <span class="dv">3</span>)))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(q2<span class="sc">$</span>distance)</span></code></pre></div>
+<h3 id="question-2b-solution">Question 2(b) Solution</h3>
+<p>The smallest functional margin is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="bold-italic">𝒙</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\min_i y_if(\mathbf{x}_i)=5</annotation></semantics></math>.
+Dividing the intercept and every coefficient by 5 preserves the boundary
+while making the smallest functional margin 1:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msub><mi mathvariant="bold-italic">𝜷</mi><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">w</mi></mrow></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0.2</mn><mo>,</mo><mn>0.4</mn><mo>,</mo><mi>−</mi><mn>0.4</mn><mo>,</mo><mn>0.8</mn><msup><mo stretchy="false" form="postfix">)</mo><mi mathvariant="sans-serif">𝖳</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>β</mi><mrow><mn>0</mn><mo>,</mo><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">w</mi></mrow></mrow></msub><mo>=</mo><mi>−</mi><mn>0.2</mn><mi>.</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{\boldsymbol{\beta}_{\mathrm{new}}=(0.2,0.4,-0.4,0.8)^{\mathsf T},\qquad \beta_{0,\mathrm{new}}=-0.2.}
+</annotation></semantics></math></p>
+<p>The normalized score is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">w</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mn>0.2</mn><mo>+</mo><mn>0.2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>0.4</mn><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>0.4</mn><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><mn>0.8</mn><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">f_{\mathrm{new}}(\mathbf{x})=-0.2+0.2x_1+0.4x_2-0.4x_3+0.8x_4</annotation></semantics></math>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(q2<span class="sc">$</span>functional_margin)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(q2<span class="sc">$</span>functional_margin <span class="sc">/</span> <span class="dv">5</span>) <span class="co"># Equals 1 after normalization</span></span></code></pre></div>
+<h2 id="question-3-peer-review-of-a-homework-7-skill">Question 3: Peer
+review of a Homework 7 skill</h2>
+<p>The instructor’s GitHub account, <strong>rqzhu-aide</strong>, will
+open a <strong>GitHub Issue</strong> in the repository containing your
+Homework 7 submission. It will link to <strong>one</strong> assigned
+student’s repository.</p>
+<ol type="1">
+<li><p><strong>Use the skill.</strong> Find the complete skill
+definition in the assigned student’s Homework 7 report. Copy it without
+changes into a local <code>SKILL.md</code> file in your own folder. You
+do not need to install it. Give your agent the path to the file and
+explicitly ask it to follow that skill while analyzing the
+<code>SAheart</code> data, using the response and predictor coding from
+Homework 7. Provide the necessary data information, but no additional
+preferences about methods, figures, model selection, or report style.
+Let the skill direct the analysis.</p>
+<p>Monitor the time, your token use, and your weekly quota while the
+agent works. If the run is taking too long or using your allowance too
+quickly, you may send a <strong>steer message</strong> asking the agent
+to finish immediately, or stop the run and summarize what you observed.
+A steer message redirects an agent while it is working; learn how to
+send one in your AI tool before starting.</p></li>
+<li><p><strong>Write a peer review.</strong> Read the student’s
+submitted report and what the skill produced in your run. Give a brief
+overall assessment, followed by <strong>three major items the author
+could improve</strong>. You may comment on any aspect of the skill or
+report. For each item, explain what you observed, why it matters, and
+what you recommend changing. If you stopped the run early, explain where
+and why. Write the review yourself, without AI assistance.</p></li>
+<li><p><strong>Share your review.</strong> Open a GitHub Issue in the
+assigned student’s Homework 7 repository containing your review. Copy
+the same review into your Homework 8 submission report and include a
+link to the GitHub Issue.</p></li>
+</ol>
+<h2 id="question-3-solution">Question 3: Solution</h2>
+</body>
+</html>

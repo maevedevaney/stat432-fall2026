@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Forest Analysis Skill</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #202b2a;
+      background: #f2f5f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 48px 28px;
+      line-height: 1.65;
+    }
+
+    main {
+      padding: 36px 42px;
+      background: #fff;
+      border: 1px solid #d6dfd9;
+      border-top: 5px solid #26715f;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .description {
+      margin: 0 0 24px;
+      color: #52635e;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .version {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 3px 8px;
+      border: 1px solid #b8cbc1;
+      color: #315a4d;
+      font: 0.8rem -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      padding: 0 0 14px 6px;
+    }
+
+    li:last-child { padding-bottom: 0; }
+
+    strong { color: #174d40; }
+
+    code {
+      padding: 1px 4px;
+      background: #edf2ee;
+      font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      main { padding: 24px 20px; }
+      h1 { font-size: 1.7rem; }
+    }
+
+    @media print {
+      :root { background: #fff; }
+      body { max-width: none; padding: 0; }
+      main { padding: 0; border: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Random Forest Analysis</h1>
+    <p class="description">Use only when explicitly asked to fit, tune, evaluate, or report a random forest analysis.</p>
+    <p class="version">Version 1.0.0</p>
+
+    <ol>
+      <li><strong>Identify the problem type:</strong> Determine whether the task is regression or classification. Identify the response and predictor variables, their types, and the intended prediction target.</li>
+      <li><strong>Prepare the data:</strong> Check for missing values, incorrect variable types, class imbalance, and other data-quality issues. Choose and document appropriate handling; fit learned preprocessing using training data only.</li>
+      <li><strong>Separate training and test data:</strong> Reserve a suitable test set for final evaluation. Do not use it to fit, tune, or select the model. When a separate test set is not appropriate, state the alternative evaluation design.</li>
+      <li><strong>Fit a baseline random forest:</strong> Train an initial forest with default settings where available. Record its configuration and use it as a benchmark for later comparisons.</li>
+      <li><strong>Tune important parameters:</strong> Consider <code>mtry</code> (or the implementation's equivalent, such as <code>max_features</code>) and node size (such as <code>min_samples_leaf</code>). Choose a manageable, data-appropriate set of candidate values and keep other settings fixed unless there is a reason to vary them.</li>
+      <li><strong>Use appropriate model selection:</strong> Select tuning parameters using cross-validation or out-of-bag (OOB) error on training data only. Use consistent folds or resampling across candidates when possible, and never use test-set results to choose a model.</li>
+      <li><strong>Evaluate model performance:</strong> Refit the selected configuration using the training data, then evaluate it on the reserved test set once. Report suitable metrics, such as MSE for regression or misclassification rate and a confusion matrix for classification; distinguish test results from cross-validation or OOB results.</li>
+      <li><strong>Analyze variable importance:</strong> Calculate and interpret variable importance when appropriate. Identify the leading predictors, note that importance is not evidence of causation, and mention limitations such as correlated predictors affecting importance estimates.</li>
+      <li><strong>Create clear tables and figures:</strong> Present candidate settings and their selection results in an organized table. Use clearly labeled figures to communicate tuning results or model performance, and ensure all displays match the computed results.</li>
+      <li><strong>Write an understandable report:</strong> Explain the procedure and findings in straightforward language. Discuss the bias-variance trade-off and relevant limitations, and conclude with the main findings rather than focusing only on technical output. Make code and randomness reproducible, and verify reported values against executable results.</li>
+    </ol>
+  </main>
+</body>
+</html>

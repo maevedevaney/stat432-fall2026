@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Homework 10</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Homework 10</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#question-1-bias-variance-trade-off-simulation"
+id="toc-question-1-bias-variance-trade-off-simulation">Question 1:
+Bias-variance trade-off simulation</a></li>
+<li><a href="#question-1-solution" id="toc-question-1-solution">Question
+1 Solution</a></li>
+<li><a href="#question-2-tuning-random-forests-for-mnist"
+id="toc-question-2-tuning-random-forests-for-mnist">Question 2: Tuning
+random forests for MNIST</a></li>
+<li><a href="#question-2-homework" id="toc-question-2-homework">Question
+2 Homework</a></li>
+<li><a href="#section" id="toc-section">————————————————–</a></li>
+<li><a href="#load-and-split-mnist-data"
+id="toc-load-and-split-mnist-data">1. Load and split MNIST data</a></li>
+<li><a href="#section-1" id="toc-section-1">————————————————–</a></li>
+<li><a href="#section-2" id="toc-section-2">————————————————–</a></li>
+<li><a href="#pca-fit-on-training-data-only"
+id="toc-pca-fit-on-training-data-only">2. PCA: fit on training data
+only</a></li>
+<li><a href="#section-3" id="toc-section-3">————————————————–</a></li>
+<li><a href="#section-4" id="toc-section-4">————————————————–</a></li>
+<li><a href="#default-random-forest" id="toc-default-random-forest">3.
+Default random forest</a></li>
+<li><a href="#section-5" id="toc-section-5">————————————————–</a></li>
+<li><a href="#section-6" id="toc-section-6">————————————————–</a></li>
+<li><a href="#tune-mtry-and-node-size-using-oob-error"
+id="toc-tune-mtry-and-node-size-using-oob-error">4. Tune mtry and node
+size using OOB error</a></li>
+<li><a href="#section-7" id="toc-section-7">————————————————–</a></li>
+<li><a href="#section-8" id="toc-section-8">————————————————–</a></li>
+<li><a href="#select-best-parameters" id="toc-select-best-parameters">5.
+Select best parameters</a></li>
+<li><a href="#section-9" id="toc-section-9">————————————————–</a></li>
+<li><a href="#plot-oob-tuning-results"
+id="toc-plot-oob-tuning-results">Plot OOB tuning results</a></li>
+<li><a href="#section-10" id="toc-section-10">————————————————–</a></li>
+<li><a href="#selected-forest-and-oob-importance"
+id="toc-selected-forest-and-oob-importance">6. Selected forest and OOB
+importance</a></li>
+<li><a href="#section-11" id="toc-section-11">————————————————–</a></li>
+<li><a href="#attribute-name-depends-on-python-rlt-version"
+id="toc-attribute-name-depends-on-python-rlt-version">Attribute name
+depends on Python rlt version</a></li>
+<li><a href="#section-12" id="toc-section-12">————————————————–</a></li>
+<li><a href="#final-test-assessment" id="toc-final-test-assessment">7.
+Final test assessment</a></li>
+<li><a href="#section-13" id="toc-section-13">————————————————–</a>
+<ul>
+<li><a href="#question-3-planning-a-random-forest-analysis-skill"
+id="toc-question-3-planning-a-random-forest-analysis-skill">Question 3:
+Planning a random-forest analysis skill</a></li>
+<li><a href="#question-3-solution" id="toc-question-3-solution">Question
+3 Solution</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>Solutions for Questions 1 and 2 will be available after Monday,
+November 2, 2026. No solution will be provided for Question 3.</p>
+<p>Use the RLT package for Questions 1 and 2: <code>RLT</code> in R or
+<code>rlt</code> in Python. The node-size parameter is <code>nmin</code>
+in R and <code>min_samples_leaf</code> in Python; both stop splitting a
+node when it contains at most that many observations. The
+candidate-predictor parameter is <code>mtry</code> in both languages.
+Use ordinary random forests, with reinforcement turned off.</p>
+<h2 id="question-1-bias-variance-trade-off-simulation">Question 1:
+Bias-variance trade-off simulation</h2>
+<p>Two important tuning parameters of random forests are node size and
+<code>mtry</code>. We have performed some preliminary analysis in class.
+The goal of this question is to perform a larger simulation study for
+these two tuning parameters.</p>
+<p>Consider a regression model with five jointly normally distributed
+predictors. Each predictor has mean 0 and variance 1, and the
+correlation between any two different predictors is 0.3. The response
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><msub><mi>X</mi><mn>3</mn></msub><mo>+</mo><msub><mi>X</mi><mn>5</mn></msub><mo>+</mo><mi>ε</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>ε</mi><mo>∼</mo><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+Y=X_1+X_3+X_5+\varepsilon,
+\qquad \varepsilon\sim N(0,1),
+</annotation></semantics></math></p>
+<p>where the noise is independent of the predictors. Thus the true
+regression function is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><msub><mi>x</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">f(\mathbf{x})=x_1+x_3+x_5</annotation></semantics></math>.</p>
+<ol type="a">
+<li><p>Set up a simulation study with 100 repetitions. Generate 200 test
+predictor vectors once and keep them fixed. In each repetition, generate
+200 new training observations and use the same training data for all
+tuning settings. Fit 500-tree forests, drawing 200 observations with
+replacement for each tree. Make the following two comparisons:</p>
+<ul>
+<li>Fix <code>mtry</code> at 3 and vary node size over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>20</mn><mo>,</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">1,5,10,20,30</annotation></semantics></math>.</li>
+<li>Fix node size at 10 and vary <code>mtry</code> over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">1,2,3,4,5</annotation></semantics></math>.</li>
+</ul>
+<p>Leave all other fitting parameters at their defaults. Record the
+predictions at each test point across repetitions. For each setting,
+estimate the squared bias and variance at each test point, then average
+them over the 200 test points. Compare predictions with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(\mathbf{x})</annotation></semantics></math>
+when estimating bias. Produce two figures, one for each tuning
+parameter, showing the averaged squared bias and variance. Set a random
+seed and report it.</p></li>
+<li><p>Discuss your results in terms of the bias-variance trade-off:</p>
+<ul>
+<li>How does a large node size, such as 30, affect the fit in this
+example?</li>
+<li>What are the benefits and drawbacks of using a large
+<code>mtry</code> value?</li>
+<li>If each tree instead sampled 100 observations with replacement,
+would you expect the preferred node size to shift toward smaller or
+larger values? Explain your reasoning. You may use an additional
+simulation to help, but a particular pattern is not guaranteed.</li>
+</ul></li>
+</ol>
+<h2 id="question-1-solution">Question 1 Solution</h2>
+<p>import numpy as np import pandas as pd import matplotlib.pyplot as
+plt from rlt import RLT</p>
+<p>SEED = 432 rng = np.random.default_rng(SEED)</p>
+<p>n_train = 200 n_test = 200 n_rep = 100 p = 5</p>
+<p>Sigma = np.full((p, p), 0.3) np.fill_diagonal(Sigma, 1.0)</p>
+<p>def true_f(X): return X[:, 0] + X[:, 2] + X[:, 4]</p>
+<p>X_test = rng.multivariate_normal( np.zeros(p), Sigma, size=n_test )
+f_test = true_f(X_test)</p>
+<p>settings = ( [(“Node size”, n, 3) for n in [1, 5, 10, 20, 30]] +
+[(“mtry”, 10, m) for m in [1, 2, 3, 4, 5]] )</p>
+<p>predictions = np.zeros((len(settings), n_rep, n_test))</p>
+<p>for r in range(n_rep): X_train = rng.multivariate_normal(
+np.zeros(p), Sigma, size=n_train ) y_train = true_f(X_train) +
+rng.normal(size=n_train)</p>
+<pre><code>for j, (comparison, node_size, mtry) in enumerate(settings):
+    model = RLT(
+        model=&quot;regression&quot;,
+        ntrees=500,
+        mtry=mtry,
+        min_samples_leaf=node_size,
+        sample_fraction=1.0,
+        replacement=True,
+        reinforcement=False,
+        random_state=SEED + r * len(settings) + j
+    )
+    model.fit(X_train, y_train)
+    predictions[j, r, :] = model.predict(X_test)</code></pre>
+<p>results = []</p>
+<p>for j, (comparison, node_size, mtry) in enumerate(settings): P =
+predictions[j] mean_pred = P.mean(axis=0)</p>
+<pre><code>bias2 = np.mean((mean_pred - f_test)**2)
+variance = np.mean(P.var(axis=0, ddof=1))
+
+results.append({
+    &quot;Comparison&quot;: comparison,
+    &quot;Node size&quot;: node_size,
+    &quot;mtry&quot;: mtry,
+    &quot;Squared bias&quot;: bias2,
+    &quot;Variance&quot;: variance
+})</code></pre>
+<p>results = pd.DataFrame(results) print(results.round(4))</p>
+<p>for comparison, xcol in [ (“Node size”, “Node size”), (“mtry”,
+“mtry”)]: subset = results[results[“Comparison”] == comparison]</p>
+<pre><code>plt.figure(figsize=(7, 4))
+plt.plot(subset[xcol], subset[&quot;Squared bias&quot;],
+         marker=&quot;o&quot;, label=&quot;Squared bias&quot;)
+plt.plot(subset[xcol], subset[&quot;Variance&quot;],
+         marker=&quot;o&quot;, label=&quot;Variance&quot;)
+plt.xlabel(xcol)
+plt.ylabel(&quot;Average across test points&quot;)
+plt.title(f&quot;Bias-variance trade-off: {comparison}&quot;)
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()</code></pre>
+<h2 id="question-2-tuning-random-forests-for-mnist">Question 2: Tuning
+random forests for MNIST</h2>
+<p>Use <code>mnist-first2000.csv.gz</code> from the combined ZIP. It
+contains 2,000 MNIST observations, with the digit label
+<code>Digit</code> and 784 pixel values.</p>
+<ul>
+<li>From the first 1,000 observations, keep digits 1, 6, and 7 as the
+training data. From the remaining 1,000 observations, keep the same
+digits as the test data.</li>
+<li>Fit PCA to the training pixels, centering but not scaling them. Use
+the first 20 principal components as predictors, and project the test
+observations using the same training means and loadings.</li>
+</ul>
+<p>Complete the following tasks using RLT classification forests with
+1,000 trees. For each tree, draw a bootstrap sample of the same size as
+the training set.</p>
+<ol type="a">
+<li><p>Fit a random forest with the default <code>mtry</code> and
+node-size settings. Report the out-of-bag (OOB) misclassification
+rate.</p></li>
+<li><p>Construct a grid of <code>mtry</code> and node-size values to
+tune the model. Select the setting using OOB misclassification rate.
+Report the OOB error for each setting and the selected values. Calculate
+and present the selected forest’s OOB permutation variable importance
+for the 20 principal components. Comment on your results.</p></li>
+<li><p>Apply the selected model to the test data and report the
+misclassification rate and confusion matrix. Use the test labels only
+for this final assessment.</p></li>
+</ol>
+<h2 id="question-2-homework">Question 2 Homework</h2>
+<p>import numpy as np import pandas as pd import matplotlib.pyplot as
+plt</p>
+<p>from sklearn.decomposition import PCA from sklearn.metrics import
+confusion_matrix, ConfusionMatrixDisplay from rlt import RLT</p>
+<p>SEED = 432</p>
+<h1 id="section">————————————————–</h1>
+<h1 id="load-and-split-mnist-data">1. Load and split MNIST data</h1>
+<h1 id="section-1">————————————————–</h1>
+<p>df = pd.read_csv(“mnist-first2000.csv.gz”)</p>
+<p>train = df.iloc[:1000] test = df.iloc[1000:]</p>
+<p>train = train[train[“Digit”].isin([1, 6, 7])] test =
+test[test[“Digit”].isin([1, 6, 7])]</p>
+<p>X_train_pixels = train.drop(columns=“Digit”).to_numpy() X_test_pixels
+= test.drop(columns=“Digit”).to_numpy()</p>
+<p>y_train = train[“Digit”].to_numpy() y_test =
+test[“Digit”].to_numpy()</p>
+<p>print(“Training observations:”, len(y_train)) print(“Test
+observations:”, len(y_test))</p>
+<h1 id="section-2">————————————————–</h1>
+<h1 id="pca-fit-on-training-data-only">2. PCA: fit on training data
+only</h1>
+<h1 id="section-3">————————————————–</h1>
+<p>pca = PCA(n_components=20, svd_solver=“full”)</p>
+<p>X_train = pca.fit_transform(X_train_pixels) X_test =
+pca.transform(X_test_pixels)</p>
+<p>print(“PCA predictors:”, X_train.shape[1]) print(“Variance
+explained:”, pca.explained_variance_ratio_.sum())</p>
+<h1 id="section-4">————————————————–</h1>
+<h1 id="default-random-forest">3. Default random forest</h1>
+<h1 id="section-5">————————————————–</h1>
+<p>default_rf = RLT( model=“classification”, ntrees=1000,
+sample_fraction=1.0, replacement=True, reinforcement=False,
+random_state=SEED )</p>
+<p>default_rf.fit(X_train, y_train)</p>
+<p>default_oob = default_rf.oob_error_</p>
+<p>print(“OOB error:”, default_oob)</p>
+<h1 id="section-6">————————————————–</h1>
+<h1 id="tune-mtry-and-node-size-using-oob-error">4. Tune mtry and node
+size using OOB error</h1>
+<h1 id="section-7">————————————————–</h1>
+<p>mtry_grid = [1, 2, 4, 6, 10, 15, 20] node_grid = [1, 3, 5, 10,
+20]</p>
+<p>results = []</p>
+<p>for mtry in mtry_grid: for node_size in node_grid:</p>
+<pre><code>    rf = RLT(
+        model=&quot;classification&quot;,
+        ntrees=1000,
+        mtry=mtry,
+        min_samples_leaf=node_size,
+        sample_fraction=1.0,
+        replacement=True,
+        reinforcement=False,
+        random_state=SEED
+    )
+
+    rf.fit(X_train, y_train)
+
+    results.append({
+        &quot;mtry&quot;: mtry,
+        &quot;node_size&quot;: node_size,
+        &quot;OOB_error&quot;: rf.oob_error_
+    })</code></pre>
+<p>results_df = pd.DataFrame(results)</p>
+<p>print(“results:”) print(results_df.to_string(index=False))</p>
+<h1 id="section-8">————————————————–</h1>
+<h1 id="select-best-parameters">5. Select best parameters</h1>
+<h1 id="section-9">————————————————–</h1>
+<p>best = results_df.sort_values( [“OOB_error”, “mtry”, “node_size”]
+).iloc[0]</p>
+<p>best_mtry = int(best[“mtry”]) best_node = int(best[“node_size”])</p>
+<p>print(“mtry:”, best_mtry) print(“Selected node size:”, best_node)
+print(“Selected OOB error:”, best[“OOB_error”])</p>
+<h1 id="plot-oob-tuning-results">Plot OOB tuning results</h1>
+<p>pivot = results_df.pivot( index=“node_size”, columns=“mtry”,
+values=“OOB_error” )</p>
+<p>plt.figure(figsize=(8, 5)) plt.imshow(pivot.values, aspect=“auto”,
+cmap=“viridis”) plt.colorbar(label=“OOB misclassification rate”)
+plt.xticks(range(len(pivot.columns)), pivot.columns)
+plt.yticks(range(len(pivot.index)), pivot.index) plt.xlabel(“mtry”)
+plt.ylabel(“Node size”) plt.title(“Random forest OOB tuning results”)
+plt.tight_layout() plt.show()</p>
+<h1 id="section-10">————————————————–</h1>
+<h1 id="selected-forest-and-oob-importance">6. Selected forest and OOB
+importance</h1>
+<h1 id="section-11">————————————————–</h1>
+<p>best_rf = RLT( model=“classification”, ntrees=1000, mtry=best_mtry,
+min_samples_leaf=best_node, sample_fraction=1.0, replacement=True,
+reinforcement=False, importance=“permute”, random_state=SEED )</p>
+<p>best_rf.fit(X_train, y_train)</p>
+<h1 id="attribute-name-depends-on-python-rlt-version">Attribute name
+depends on Python rlt version</h1>
+<p>importance = np.asarray(best_rf.variable_importance_).ravel()</p>
+<p>importance_df = pd.DataFrame({ “PC”: [f”PC{i}” for i in range(1,
+21)], “Importance”: importance }).sort_values(“Importance”,
+ascending=False)</p>
+<p>print(“permutation importance:”)
+print(importance_df.to_string(index=False))</p>
+<p>plt.figure(figsize=(9, 5)) plt.bar(importance_df[“PC”],
+importance_df[“Importance”]) plt.xticks(rotation=60)
+plt.xlabel(“Principal component”) plt.ylabel(“OOB permutation
+importance”) plt.title(“Variable importance of 20 principal components”)
+plt.tight_layout() plt.show()</p>
+<h1 id="section-12">————————————————–</h1>
+<h1 id="final-test-assessment">7. Final test assessment</h1>
+<h1 id="section-13">————————————————–</h1>
+<p>y_pred = best_rf.predict(X_test)</p>
+<p>test_error = np.mean(y_pred != y_test)</p>
+<p>print(“test misclassification rate:”, test_error)</p>
+<p>cm = confusion_matrix( y_test, y_pred, labels=[1, 6, 7] )</p>
+<p>print(“matrix:”) print(pd.DataFrame( cm, index=[“Actual 1”, “Actual
+6”, “Actual 7”], columns=[“Predicted 1”, “Predicted 6”, “Predicted 7”]
+))</p>
+<p>ConfusionMatrixDisplay( confusion_matrix=cm, display_labels=[1, 6, 7]
+).plot(cmap=“Blues”)</p>
+<p>plt.title(“MNIST test confusion matrix”) plt.show()</p>
+<h2 id="question-3-planning-a-random-forest-analysis-skill">Question 3:
+Planning a random-forest analysis skill</h2>
+<p>In earlier homework, some students wrote long skill files with
+detailed instructions, while others wrote short skills emphasizing their
+specific requirements or references. These approaches may perform
+differently depending on the AI and the task. A capable AI may already
+know standard ways to perform an analysis, so some instructions may be
+redundant, add little value, or sometimes make the analysis worse. It
+may be more useful to specify your personal choices for the analysis. An
+AI with more limited knowledge may benefit from detailed instructions
+that remind it of the steps to perform.</p>
+<ol type="a">
+<li><p>Write one paragraph describing how you would write a skill that
+directs an AI to perform a random-forest analysis and produce a report
+for a future dataset. Discuss how you would balance standard analysis
+instructions with your personal preferences, considering the AI’s
+capabilities.</p></li>
+<li><p>Provide <strong>10 instructions</strong> you would consider
+including in the skill, <strong>ordered from the most basic instructions
+to the more personal preferences</strong>. Your list may cover
+computation, tuning, tables, figures, interpretation, presentation, or
+other aspects of a random-forest report.</p></li>
+</ol>
+<p>You only need to discuss how the skill should be written. You are not
+required to write a complete skill file or test it.</p>
+<h2 id="question-3-solution">Question 3 Solution</h2>
+<p>I would write a random-forest analysis skill that provides clear
+instructions for the important steps while allowing the AI flexibility
+to adapt to different datasets. A capable AI likely already understands
+standard procedures such as splitting data, fitting models, and
+evaluating predictions, so I would avoid including excessive
+explanations of these steps. Instead, I would focus on specifying my
+personal preferences, such as using reproducible random seeds, selecting
+tuning parameters through cross-validation or OOB error, creating clear
+visualizations, and explaining results in simple language. For an AI
+with less statistical knowledge, I would include more detailed
+instructions to prevent mistakes such as using test data during tuning.
+Overall, I would want the skill to be detailed enough to ensure accurate
+and consistent analysis without restricting the AI’s ability to make
+appropriate decisions based on the dataset.</p>
+<p>Identify the problem type: Determine whether the dataset requires
+regression or classification and identify the response and predictor
+variables.</p>
+<p>Prepare the data: Check for missing values, incorrect variable types,
+and other data quality issues before fitting the model.</p>
+<p>Separate training and test data: Use training data for model
+development and reserve the test set for final evaluation.</p>
+<p>Fit a baseline random forest: Train an initial model using default
+settings to establish a benchmark.</p>
+<p>Tune important parameters: Consider parameters such as mtry and node
+size, selecting appropriate candidate values based on the dataset.</p>
+<p>Use appropriate model selection: Select tuning parameters using
+cross-validation or out-of-bag error without using the test set.</p>
+<p>Evaluate model performance: Report relevant metrics, such as MSE for
+regression or misclassification rate and a confusion matrix for
+classification.</p>
+<p>Analyze variable importance: Calculate variable importance when
+appropriate and explain which predictors contribute most to the model’s
+predictions.</p>
+<p>Create clear tables and figures: Present tuning results and model
+performance using organized tables and labeled figures that are easy to
+interpret.</p>
+<p>Write an understandable report: Explain the results in
+straightforward language, emphasize the bias-variance trade-off, discuss
+limitations, and conclude with the main findings rather than focusing
+only on technical output.</p>
+</body>
+</html>

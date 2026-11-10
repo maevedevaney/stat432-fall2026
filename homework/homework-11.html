@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Homework 11</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Homework 11</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#question-1-implementing-k-means" id="toc-question-1-implementing-k-means">Question 1: Implementing
+K-means</a></li>
+<li><a href="#question-1-solution" id="toc-question-1-solution">Question
+1 Solution</a></li>
+<li><a href="#part-a" id="toc-part-a">part a</a></li>
+<li><a href="#part-b" id="toc-part-b">part b</a></li>
+<li><a href="#part-c" id="toc-part-c">part c</a></li>
+<li><a href="#question-2-image-color-compression" id="toc-question-2-image-color-compression">Question 2: Image color
+compression</a></li>
+<li><a href="#question-2-solution" id="toc-question-2-solution">Question
+2 Solution</a></li>
+<li><a href="#part-a-1" id="toc-part-a-1">part a</a></li>
+<li><a href="#part-b-1" id="toc-part-b-1">part b</a></li>
+<li><a href="#part-c-1" id="toc-part-c-1">part c</a></li>
+<li><a href="#question-3-solution" id="toc-question-3-solution">Question
+3 Solution</a></li>
+<li><a href="#part-a-2" id="toc-part-a-2">part a</a></li>
+<li><a href="#part-b-2" id="toc-part-b-2">part b</a></li>
+</ul>
+</nav>
+<p>Solutions will be available after Monday, November 9, 2026.</p>
+<h2 id="question-1-implementing-k-means">Question 1: Implementing
+K-means</h2>
+<p>K-means is a relatively simple algorithm that we can write ourselves.
+For Questions 1 and 2, do not use an existing function that performs
+K-means directly.</p>
+<p>Generate 10 observations with two independent standard normal
+coordinates. Set a random seed and report it. Randomly assign the
+observations to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K=2</annotation></semantics></math>
+clusters, making sure neither cluster is empty. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(i)</annotation></semantics></math>
+denote the cluster assigned to observation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math>
+denote the mean of cluster
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+<ol type="a">
+<li><p>Perform one iteration: calculate the cluster means, then assign
+each observation to its closest mean using Euclidean distance. Report
+the means and updated assignments, and plot the observations colored by
+their updated assignments.</p></li>
+<li><p>Write a function that repeats these two steps until the
+assignments stop changing or a specified maximum number of iterations is
+reached. Your function should work for a data matrix with any number of
+variables and a chosen number of clusters
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Start from a nonempty assignment to each cluster; if a cluster becomes
+empty during iteration, keep its previous mean. Recalculate the cluster
+means from the final assignments before returning them. Return the final
+assignments, cluster means, and within-cluster sum of squares,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>K</mi></munderover><munder><mo>∑</mo><mrow><mi>i</mi><mo>:</mo><mspace width="0.167em"></mspace><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi></mrow></munder><msup><mrow><mo stretchy="true" form="prefix">‖</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>m</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">‖</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{k=1}^K\sum_{i:\,C(i)=k}\lVert x_i-m_k\rVert^2.
+</annotation></semantics></math></p></li>
+<li><p>Apply your function to the same 10 observations from two
+different random initial assignments. Report the final plots, cluster
+means, and within-cluster sums of squares. Do the two runs produce the
+same grouping and objective value? Explain your findings.</p></li>
+</ol>
+<h2 id="question-1-solution">Question 1 Solution</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> pdist</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> linkage, dendrogram, fcluster</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>SEED <span class="op">=</span> <span class="dv">1234</span></span></code></pre></div>
+<h2 id="part-a">part a</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(SEED)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rng.standard_normal((<span class="dv">10</span>, <span class="dv">2</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_nonempty_labels(n, K, rng):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="dv">1</span> <span class="op">&lt;=</span> K <span class="op">&lt;=</span> n:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;K must be between 1 and the number of observations&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> np.concatenate((np.arange(K), rng.integers(K, size<span class="op">=</span>n<span class="op">-</span>K)))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    rng.shuffle(labels)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cluster_means(X, labels, K, old_means<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> np.zeros((K, X.shape[<span class="dv">1</span>]), dtype<span class="op">=</span><span class="bu">float</span>) <span class="cf">if</span> old_means <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> old_means.copy()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(K):</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        members <span class="op">=</span> X[labels <span class="op">==</span> k]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(members) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            means[k] <span class="op">=</span> members.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> means</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> closest_means(X, means):</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Squared Euclidean distance has the same minimizing center as distance.</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> ((X[:, <span class="va">None</span>, :] <span class="op">-</span> means[<span class="va">None</span>, :, :]) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.argmin(d2, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>initial <span class="op">=</span> random_nonempty_labels(<span class="bu">len</span>(X), <span class="dv">2</span>, rng)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>initial_means <span class="op">=</span> cluster_means(X, initial, <span class="dv">2</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>updated <span class="op">=</span> closest_means(X, initial_means)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Initial assignments (clusters numbered 1 and 2):&quot;</span>, initial <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Means before reassignment (rows = clusters):</span><span class="ch">\n</span><span class="st">&quot;</span>, initial_means)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Updated assignments:&quot;</span>, updated <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame({<span class="st">&#39;x1&#39;</span>: X[:, <span class="dv">0</span>], <span class="st">&#39;x2&#39;</span>: X[:, <span class="dv">1</span>], <span class="st">&#39;initial_cluster&#39;</span>: initial<span class="op">+</span><span class="dv">1</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;updated_cluster&#39;</span>: updated<span class="op">+</span><span class="dv">1</span>}).<span class="bu">round</span>(<span class="dv">3</span>).to_string(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>updated, cmap<span class="op">=</span><span class="st">&#39;coolwarm&#39;</span>, s<span class="op">=</span><span class="dv">85</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.scatter(initial_means[:, <span class="dv">0</span>], initial_means[:, <span class="dv">1</span>], marker<span class="op">=</span><span class="st">&#39;X&#39;</span>, s<span class="op">=</span><span class="dv">180</span>, c<span class="op">=</span>[<span class="st">&#39;navy&#39;</span>, <span class="st">&#39;darkred&#39;</span>], edgecolor<span class="op">=</span><span class="st">&#39;white&#39;</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(X):</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    plt.annotate(<span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>), (x, y), xytext<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">&#39;offset points&#39;</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Question 1(a): assignments after one iteration&#39;</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;x1&#39;</span>)<span class="op">;</span> plt.ylabel(<span class="st">&#39;x2&#39;</span>)<span class="op">;</span> plt.grid(alpha<span class="op">=</span><span class="fl">.2</span>)<span class="op">;</span> plt.show()</span></code></pre></div>
+<h2 id="part-b">part b</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_kmeans(X, K, initial_labels<span class="op">=</span><span class="va">None</span>, max_iter<span class="op">=</span><span class="dv">100</span>, seed<span class="op">=</span><span class="dv">4321</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&#39;X must be a finite two-dimensional numerical matrix&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    n, p <span class="op">=</span> X.shape</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="dv">1</span> <span class="op">&lt;=</span> K <span class="op">&lt;=</span> n <span class="kw">or</span> max_iter <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&#39;Require 1 &lt;= K &lt;= n and max_iter &gt;= 1&#39;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> initial_labels <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        initial_labels <span class="op">=</span> random_nonempty_labels(n, K, np.random.default_rng(seed))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> np.asarray(initial_labels, dtype<span class="op">=</span><span class="bu">int</span>).copy()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> labels.shape <span class="op">!=</span> (n,) <span class="kw">or</span> <span class="bu">set</span>(labels.tolist()) <span class="op">!=</span> <span class="bu">set</span>(<span class="bu">range</span>(K)):</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&#39;Initial labels must use all cluster indices 0,...,K-1&#39;</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> cluster_means(X, labels, K)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> iteration <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_iter<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        new_labels <span class="op">=</span> closest_means(X, means)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.array_equal(new_labels, labels):</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        labels <span class="op">=</span> new_labels</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        means <span class="op">=</span> cluster_means(X, labels, K, old_means<span class="op">=</span>means)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Means correspond to the final labels, including when max_iter is reached.</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> cluster_means(X, labels, K, old_means<span class="op">=</span>means)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    wcss <span class="op">=</span> <span class="bu">float</span>(np.<span class="bu">sum</span>((X <span class="op">-</span> means[labels]) <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels, means, wcss</span></code></pre></div>
+<h2 id="part-c">part c</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng_runs <span class="op">=</span> np.random.default_rng(<span class="dv">987</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>starts <span class="op">=</span> [random_nonempty_labels(<span class="dv">10</span>, <span class="dv">2</span>, rng_runs) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [my_kmeans(X, <span class="dv">2</span>, initial_labels<span class="op">=</span>s) <span class="cf">for</span> s <span class="kw">in</span> starts]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">4.5</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j, (ax, (labels, means, wcss)) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(axes, results), start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>labels, cmap<span class="op">=</span><span class="st">&#39;coolwarm&#39;</span>, s<span class="op">=</span><span class="dv">85</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ax.scatter(means[:, <span class="dv">0</span>], means[:, <span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;black&#39;</span>, marker<span class="op">=</span><span class="st">&#39;X&#39;</span>, s<span class="op">=</span><span class="dv">180</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(X):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        ax.annotate(<span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>), (x, y), xytext<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>), textcoords<span class="op">=</span><span class="st">&#39;offset points&#39;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f&#39;Run </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">: WCSS = </span><span class="sc">{</span>wcss<span class="sc">:.4f}</span><span class="ss">&#39;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">&#39;x1&#39;</span>)<span class="op">;</span> ax.set_ylabel(<span class="st">&#39;x2&#39;</span>)<span class="op">;</span> ax.grid(alpha<span class="op">=</span><span class="fl">.2</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j, (start, (labels, means, wcss)) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(starts, results), start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Run </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">: start=</span><span class="sc">{</span>start<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">, final=</span><span class="sc">{</span>labels<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Cluster means:</span><span class="ch">\n</span><span class="sc">{</span>means<span class="sc">}</span><span class="ch">\n</span><span class="ss">WCSS=</span><span class="sc">{</span>wcss<span class="sc">:.6f}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># A swap of cluster names is not a different grouping.</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> results[<span class="dv">0</span>][<span class="dv">0</span>], results[<span class="dv">1</span>][<span class="dv">0</span>]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>same_partition <span class="op">=</span> np.array_equal(a[:, <span class="va">None</span>] <span class="op">==</span> a[<span class="va">None</span>, :], b[:, <span class="va">None</span>] <span class="op">==</span> b[<span class="va">None</span>, :])</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Same grouping (ignoring cluster label swaps)?&#39;</span>, same_partition)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Same WCSS (within numerical tolerance)?&#39;</span>, np.isclose(results[<span class="dv">0</span>][<span class="dv">2</span>], results[<span class="dv">1</span>][<span class="dv">2</span>]))</span></code></pre></div>
+<p>The two runs produce <strong>different groupings and different
+objective values</strong>: Run 1 has WCSS <strong>8.6381</strong>, while
+Run 2 has WCSS <strong>11.4965</strong>. Run 1 is better by the WCSS
+criterion. K-means minimizes WCSS locally, so different starting
+assignments can lead to different local solutions. Cluster labels
+themselves are arbitrary, so a simple swap of labels 1 and 2 does not
+count as a different grouping.</p>
+<h2 id="question-2-image-color-compression">Question 2: Image color
+compression</h2>
+<p>Pick your favorite color image and use your K-means function from
+Question 1 to cluster its pixels. For computational efficiency, resize
+the image to no more than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>200</mn><mo>×</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">200\times200</annotation></semantics></math>
+pixels and use its three RGB color channels.</p>
+<ol type="a">
+<li><p>Plot the original image and report its dimensions. Transform it
+into a data matrix with one observation per pixel and three variables:
+red, green, and blue. Report the dimensions of this matrix.</p></li>
+<li><p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">K=2,3,5,10</annotation></semantics></math>,
+apply your function to the pixel data. Report the cluster means and
+within-cluster sum of squares for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Reconstruct and plot each compressed image by replacing every pixel with
+its assigned cluster mean. Use the same RGB scale for all fits.</p></li>
+<li><p>Which value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+would you choose for this image? Briefly justify your choice using the
+reconstructed images and the within-cluster sums of squares.</p></li>
+</ol>
+<h2 id="question-2-solution">Question 2 Solution</h2>
+<h2 id="part-a-1">part a</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>image_path <span class="op">=</span> Path(<span class="st">&#39;color_image.jpg&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> image_path.exists():</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    image_path <span class="op">=</span> Path(<span class="st">&#39;data/color_image.jpg&#39;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> image_path.exists():</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(SEED)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> Image.fromarray(rng.integers(<span class="dv">0</span>, <span class="dv">256</span>, (<span class="dv">120</span>, <span class="dv">120</span>, <span class="dv">3</span>), dtype<span class="op">=</span>np.uint8), <span class="st">&#39;RGB&#39;</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> Image.<span class="bu">open</span>(image_path).convert(<span class="st">&#39;RGB&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>image.thumbnail((<span class="dv">120</span>, <span class="dv">120</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>original <span class="op">=</span> np.asarray(image, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>height, width, channels <span class="op">=</span> original.shape</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>pixels <span class="op">=</span> original.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Image dimensions (height, width, RGB channels):&#39;</span>, original.shape)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Pixel data matrix (pixels, RGB variables):&#39;</span>, pixels.shape)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))<span class="op">;</span> plt.imshow(original.astype(np.uint8))<span class="op">;</span> plt.axis(<span class="st">&#39;off&#39;</span>)<span class="op">;</span> plt.title(<span class="st">&#39;Original color image&#39;</span>)<span class="op">;</span> plt.show()</span></code></pre></div>
+<h2 id="part-b-1">part b</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Ks <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>compressed <span class="op">=</span> {}</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">5</span>, figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">4</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].imshow(original.astype(np.uint8))<span class="op">;</span> axes[<span class="dv">0</span>].set_title(<span class="st">&#39;Original&#39;</span>)<span class="op">;</span> axes[<span class="dv">0</span>].axis(<span class="st">&#39;off&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, K <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>:], Ks):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    labels, centers, wcss <span class="op">=</span> my_kmeans(pixels, K, seed<span class="op">=</span>SEED<span class="op">+</span>K, max_iter<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    reconstructed <span class="op">=</span> np.clip(centers[labels], <span class="dv">0</span>, <span class="dv">255</span>).astype(np.uint8).reshape(height, width, <span class="dv">3</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    compressed[K] <span class="op">=</span> {<span class="st">&#39;centers&#39;</span>: centers, <span class="st">&#39;wcss&#39;</span>: wcss, <span class="st">&#39;image&#39;</span>: reconstructed}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ax.imshow(reconstructed, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f&#39;K=</span><span class="sc">{</span>K<span class="sc">}</span><span class="ss">&#39;</span>)<span class="op">;</span> ax.axis(<span class="st">&#39;off&#39;</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;K=</span><span class="sc">{</span>K<span class="sc">}</span><span class="ss"> | WCSS=</span><span class="sc">{</span>wcss<span class="sc">:,.2f}</span><span class="ss"> | RGB centers (0-255):</span><span class="ch">\n</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(centers, <span class="dv">2</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame([{<span class="st">&#39;K&#39;</span>: K, <span class="st">&#39;WCSS&#39;</span>: compressed[K][<span class="st">&#39;wcss&#39;</span>]} <span class="cf">for</span> K <span class="kw">in</span> Ks]).to_string(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.plot(Ks, [compressed[K][<span class="st">&#39;wcss&#39;</span>] <span class="cf">for</span> K <span class="kw">in</span> Ks], <span class="st">&#39;o-&#39;</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;K (number of colors)&#39;</span>)<span class="op">;</span> plt.ylabel(<span class="st">&#39;Within-cluster sum of squares&#39;</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Color-compression WCSS versus K&#39;</span>)<span class="op">;</span> plt.grid(alpha<span class="op">=</span><span class="fl">.25</span>)<span class="op">;</span> plt.show()</span></code></pre></div>
+<h2 id="part-c-1">part c</h2>
+<p><strong>I would choose K = 10</strong> for this image: among the four
+requested choices it offers the richest color detail and generally the
+closest visual match to the original, while requiring only ten RGB
+colors. WCSS measures color-reconstruction error and is nonincreasing
+with K at the <em>global optimum</em>; because our implementation uses
+one random initialization per K, the observed local-optimum WCSS values
+are not guaranteed to be perfectly monotone. K = 5 would be a reasonable
+alternative if a more stylized appearance and fewer colors were
+priorities. ## Question 3: Hierarchical clustering of cars</p>
+<p>The file <code>data/mtcars.csv</code> contains 11 numerical variables
+for 32 cars, including fuel economy, horsepower, and weight. The
+<code>car</code> column gives the model names; use it to label
+observations, not as a clustering variable. You may use existing
+hierarchical clustering functions for this question.</p>
+<ol type="a">
+<li><p>Standardize each numerical variable to have mean 0 and standard
+deviation 1. Using Euclidean distance, perform hierarchical clustering
+with single, complete, and average linkage. Plot the three dendrograms
+with the car names and compare the results.</p></li>
+<li><p>Choose one linkage method and a number of clusters that you
+consider reasonable. Report the cluster memberships and a table of
+cluster means on the original variable scales. Describe the main
+characteristics of the groups and explain your choice using the
+dendrogram and table. Briefly explain why standardizing the variables
+matters for this analysis.</p></li>
+</ol>
+<h2 id="question-3-solution">Question 3 Solution</h2>
+<h2 id="part-a-2">part a</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>csv_path <span class="op">=</span> Path(<span class="st">&#39;data/mtcars.csv&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> csv_path.exists():</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    csv_path <span class="op">=</span> Path(<span class="st">&#39;mtcars.csv&#39;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> csv_path.exists():</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="st">&#39;Could not find mtcars.csv in the expected locations.&#39;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>cars <span class="op">=</span> pd.read_csv(csv_path)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>car_names <span class="op">=</span> cars[<span class="st">&#39;car&#39;</span>].tolist()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> cars.drop(columns<span class="op">=</span>[<span class="st">&#39;car&#39;</span>])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> (features <span class="op">-</span> features.mean()) <span class="op">/</span> features.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>distances <span class="op">=</span> pdist(Z.to_numpy(), metric<span class="op">=</span><span class="st">&#39;euclidean&#39;</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>methods <span class="op">=</span> [<span class="st">&#39;single&#39;</span>, <span class="st">&#39;complete&#39;</span>, <span class="st">&#39;average&#39;</span>]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>linkages <span class="op">=</span> {method: linkage(distances, method<span class="op">=</span>method) <span class="cf">for</span> method <span class="kw">in</span> methods}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">17</span>))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, method <span class="kw">in</span> <span class="bu">zip</span>(axes, methods):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    dendrogram(linkages[method], labels<span class="op">=</span>car_names, leaf_rotation<span class="op">=</span><span class="dv">90</span>, leaf_font_size<span class="op">=</span><span class="dv">8</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f&#39;</span><span class="sc">{</span>method<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss"> linkage&#39;</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">&#39;Euclidean linkage distance&#39;</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code></pre></div>
+<h2 id="part-b-2">part b</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chosen_method <span class="op">=</span> <span class="st">&#39;complete&#39;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>number_of_clusters <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>cluster_id <span class="op">=</span> fcluster(linkages[chosen_method], t<span class="op">=</span>number_of_clusters, criterion<span class="op">=</span><span class="st">&#39;maxclust&#39;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> features.copy()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>summary.insert(<span class="dv">0</span>, <span class="st">&#39;car&#39;</span>, car_names)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">&#39;cluster&#39;</span>] <span class="op">=</span> cluster_id</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cluster <span class="kw">in</span> <span class="bu">sorted</span>(np.unique(cluster_id)):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    members <span class="op">=</span> summary.loc[summary[<span class="st">&#39;cluster&#39;</span>] <span class="op">==</span> cluster, <span class="st">&#39;car&#39;</span>].tolist()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Cluster </span><span class="sc">{</span>cluster<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(members)<span class="sc">}</span><span class="ss"> cars): &#39;</span> <span class="op">+</span> <span class="st">&#39;, &#39;</span>.join(members))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>means_table <span class="op">=</span> summary.groupby(<span class="st">&#39;cluster&#39;</span>)[features.columns].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">Cluster means on original scales:&#39;</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(means_table.to_string())</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">Cluster sizes:&#39;</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary.groupby(<span class="st">&#39;cluster&#39;</span>).size().to_string())</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>dendrogram(linkages[chosen_method], labels<span class="op">=</span>car_names, leaf_rotation<span class="op">=</span><span class="dv">90</span>, leaf_font_size<span class="op">=</span><span class="dv">8</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&#39;Complete linkage dendrogram — chosen 3-cluster solution&#39;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">&#39;Euclidean linkage distance&#39;</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code></pre></div>
+<p>Cluster 1 (15 cars) is the lighter, more fuel-efficient group: mean
+<code>mpg</code> = <strong>24.65</strong>, <code>wt</code> =
+<strong>2.58</strong>, and <code>hp</code> = <strong>91.33</strong>.
+Cluster 2 (12 cars) contains heavier eight-cylinder,
+automatic-transmission cars, with mean <code>mpg</code> =
+<strong>15.05</strong>, <code>wt</code> = <strong>4.10</strong>, and
+<code>disp</code> = <strong>357.62</strong>. Cluster 3 (5 cars) is a
+smaller group of manual-transmission, relatively powerful cars: mean
+<code>hp</code> = <strong>198.80</strong>, <code>am</code> =
+<strong>1.00</strong>, and <code>gear</code> = <strong>4.60</strong>.
+Complete linkage and three clusters give a useful separation of these
+distinct profiles, visible in the dendrogram and supported by the
+original-scale means.</p>
+<p><strong>Why standardize?</strong> Without standardization,
+large-scale variables such as displacement (<code>disp</code>) and
+horsepower (<code>hp</code>) can dominate Euclidean distances over
+variables such as weight (<code>wt</code>) and transmission
+(<code>am</code>). Standardizing gives each variable unit sample
+variance, so each has a more comparable numerical influence. This is a
+modeling choice: correlated variables can still receive overlapping
+influence, and standardization does not make binary and continuous
+variables identical in meaning.</p>
+</body>
+</html>
